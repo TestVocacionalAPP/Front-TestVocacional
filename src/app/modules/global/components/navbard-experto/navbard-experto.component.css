@@ -1,0 +1,22 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.custom-toolbar {
+  background-color: rgb(214, 238, 242);
+  color: rgb(3, 54, 61);
+  padding: 0 16px;
+  height: 64px;
+}
+
+.app-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+.toolbar-underline {
+  height: 4px;
+  background-color: rgb(3, 54, 61);
+  width: 100%;
+}

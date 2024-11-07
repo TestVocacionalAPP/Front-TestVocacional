@@ -1,0 +1,8 @@
+/* crear-recurso.component.css */
+.container {
+  max-width: 600px;
+}
+
+.card {
+  border-radius: 10px;
+}

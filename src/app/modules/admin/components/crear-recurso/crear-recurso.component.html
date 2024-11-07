@@ -1,0 +1,62 @@
+<!-- crear-recurso.component.html -->
+<div class="container mt-5">
+  <div class="card p-4 shadow">
+    <h2 class="text-center mb-4">Crear Recurso Educativo</h2>
+    <form (ngSubmit)="guardarRecurso()">
+      <!-- Campos existentes -->
+      <div class="mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Título</mat-label>
+          <input matInput [(ngModel)]="recursoData.titulo" name="titulo" required />
+        </mat-form-field>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput [(ngModel)]="recursoData.descripcion" name="descripcion" required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Tipo de Recurso</mat-label>
+          <mat-select [(ngModel)]="recursoData.tipoRecurso" name="tipoRecurso" required>
+            <mat-option value="VIDEO">Video</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>URL del Recurso</mat-label>
+          <input matInput [(ngModel)]="recursoData.urlRecurso" name="urlRecurso" required />
+        </mat-form-field>
+      </div>
+
+      <!-- Campo para Categoría de Recurso -->
+      <div class="mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Categoría de Recurso</mat-label>
+          <mat-select [(ngModel)]="recursoData.categoriaRecurso" name="categoriaRecurso" required>
+            <mat-option value="GRATUITO">Gratuito</mat-option>
+            <mat-option value="PREMIUM">Premium</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Campo para Precio -->
+      <div class="mb-3" *ngIf="recursoData.categoriaRecurso === 'PREMIUM'">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" [(ngModel)]="recursoData.precio" name="precio" />
+        </mat-form-field>
+      </div>
+
+      <div class="text-center">
+        <button mat-raised-button color="primary" type="submit">Crear Recurso</button>
+      </div>
+    </form>
+  </div>
+</div>

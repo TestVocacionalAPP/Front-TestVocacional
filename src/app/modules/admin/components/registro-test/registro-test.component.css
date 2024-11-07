@@ -1,0 +1,38 @@
+.form-container {
+  max-width: 700px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(3, 54, 61);
+}
+
+.question-list {
+  max-width: 700px;
+  overflow-y: auto;
+  max-height: 600px;
+  border-left: 2px solid #ddd;
+  padding-left: 10px;
+}
+
+.question-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-question-button {
+  margin-left: 10px;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.text-center {
+  text-align: center;
+}

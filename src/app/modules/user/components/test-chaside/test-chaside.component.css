@@ -1,0 +1,88 @@
+
+.question-card {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgb(185, 210, 220);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 51, 51, 0.1);
+  min-height: 320px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #ffffff; /* Fondo de la tarjeta */
+}
+
+.card-header {
+  background-color: rgb(3, 54, 61); /* Tono oscuro */
+
+  text-align: center;
+}
+
+.card-header h2 {
+  font-size: 1.6rem;
+  color: #ffffff; /* Texto blanco */
+  margin: 0;
+}
+
+.card-content {
+  height: 120px;
+  text-align: justify;
+  color: rgb(33, 64, 75); /* Tono más oscuro para contraste */
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.custom-button {
+  background-color: rgb(56, 95, 113); /* Azul suave */
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.custom-button:hover {
+  background-color: rgb(214, 238, 242);
+  transform: translateY(-2px);
+}
+
+.custom-button.warn {
+  background-color: rgb(228, 102, 102); /* Rojo pastel */
+}
+
+.custom-button.warn:hover {
+  background-color: rgb(198, 76, 76); /* Rojo más oscuro */
+  transform: translateY(-2px);
+}
+
+.nav-button-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.nav-button {
+  color: rgb(3, 54, 61);
+}
+.intro-card {
+
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+.intro-header {
+  color:rgb(3, 54, 61);
+  justify-content: center;
+}
+.intro-header h2 {
+   font-size: 2.4rem;
+   font-weight: bold;
+}
+.intro-content {
+  padding: 1rem;
+  color: rgb(3, 54, 61);
+  text-align: justify;
+}

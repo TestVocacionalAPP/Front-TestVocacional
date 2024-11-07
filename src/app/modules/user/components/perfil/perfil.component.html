@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8" style="color: rgb(3, 54, 61);">
+      <h2 class="text-center mb-4" style="color: rgb(3, 54, 61);">Perfil de Usuario</h2>
+
+      <!-- Imagen del perfil -->
+      <div class="row mb-3">
+        <div class="col-12 text-center">
+          <img
+            *ngIf="perfil.imagenBase64"
+            [src]="'data:image/jpeg;base64,' + perfil.imagenBase64"
+            alt="Avatar de usuario"
+            class="rounded-circle"
+            style="width: 120px; height: 120px; border: 3px solid rgb(3, 54, 61);">
+          <img
+            *ngIf="!perfil.imagenBase64"
+            src="./../../../../../assets/orientacion-es-vocacion-taller-de-orientacion-vocacional.png"
+            alt="Avatar de usuario"
+            class="rounded-circle"
+            style="width: 120px; height: 120px; border: 3px solid rgb(3, 54, 61);">
+        </div>
+      </div>
+
+      <!-- Botón de carga de imagen -->
+      <div class="text-center mb-3" *ngIf="editMode">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Subir Imagen</button>
+      </div>
+
+      <!-- Información del perfil -->
+     <!-- Formulario de perfil -->
+     <div class="row">
+      <div class="col-12 col-sm-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="perfil.nombre" [disabled]="!editMode">
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Apellido</mat-label>
+          <input matInput [(ngModel)]="perfil.apellido" [disabled]="!editMode">
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="perfil.correo" [disabled]="!editMode">
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Teléfono</mat-label>
+          <input matInput [(ngModel)]="perfil.telefono" [disabled]="!editMode">
+        </mat-form-field>
+      </div>
+    </div>
+
+
+      <!-- Botones de edición y guardado -->
+      <div class="text-center mt-4">
+        <button *ngIf="!editMode" mat-raised-button color="primary" (click)="toggleEditMode()">Editar perfil</button>
+        <button *ngIf="editMode" mat-raised-button color="primary" (click)="guardarCambios()">Guardar cambios</button>
+        <button mat-flat-button color="warn" (click)="eliminarCuenta()">Eliminar cuenta</button>
+      </div>
+    </div>
+  </div>
+</div>

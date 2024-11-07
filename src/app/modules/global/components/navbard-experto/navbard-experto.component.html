@@ -1,0 +1,46 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="app-name">Test vocacional Bienvenido Experto</span>
+  <span class="example-spacer"></span>
+
+  <!-- Botón de notificaciones con menú desplegable -->
+  <button *ngIf="isLoggedIn()" mat-icon-button [matMenuTriggerFor]="notificacionesMenu" aria-label="Notificaciones">
+    <mat-icon>notifications</mat-icon>
+    <span *ngIf="notificaciones.length" class="notification-badge">{{ notificaciones.length }}</span>
+  </button>
+
+  <!-- Menú de notificaciones -->
+  <mat-menu #notificacionesMenu="matMenu">
+    <ng-container *ngIf="notificaciones.length > 0; else noNotificaciones">
+      <button mat-menu-item *ngFor="let notificacion of notificaciones">
+        <mat-icon>notifications_active</mat-icon>
+        <span>{{ notificacion.asunto }} - {{ notificacion.estado }}</span>
+      </button>
+    </ng-container>
+    <ng-template #noNotificaciones>
+      <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        No hay notificaciones
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!-- Menú de usuario -->
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/experto/perfil-experto">
+      <mat-icon>account_circle</mat-icon>
+      <span>Ver perfil</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="isLoggedIn()" aria-label="Menú de usuario">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="toolbar-underline"></div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,39 @@
+<!-- app/modules/admin/components/admin-dash/admin-dash.component.html -->
+<div class="container-fluid p-0">
+  <div class="row">
+    <!-- Navbar a la izquierda -->
+    <nav class="col-md-3 d-md-block text-white sidebar">
+      <div class="position-sticky py-3">
+        <h3 class="text-center mb-4">Admin Panel</h3>
+        <mat-nav-list>
+
+          <!-- Opción Crear Test -->
+          <mat-list-item>
+            <a mat-button class="w-100 text-white" routerLink="/admin/registroTest">
+              <mat-icon class="me-2">assignment</mat-icon> Crear Test
+            </a>
+          </mat-list-item>
+
+          <!-- Opción Experto -->
+          <mat-list-item>
+            <a mat-button class="w-100 text-white" routerLink="/admin/crear-experto">
+              <mat-icon class="me-2">person_add</mat-icon> Experto
+            </a>
+          </mat-list-item>
+
+          <!-- Opción Recursos Educativos -->
+          <mat-list-item>
+            <a mat-button class="w-100 text-white" routerLink="/admin/recurso-educativo">
+              <mat-icon class="me-2">school</mat-icon> Recursos educativos
+            </a>
+          </mat-list-item>
+
+        </mat-nav-list>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto px-md-4 py-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-card {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgb(185, 210, 220);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 51, 51, 0.1);
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff; /* Fondo de la tarjeta */
+}
+
+mat-card-header {
+  background-color: rgb(3, 54, 61); /* Tono oscuro */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: block; /* Asegura que se muestre como bloque */
+}
+
+mat-card-header h2 {
+  font-size: 1.5rem; /* Tamaño de fuente mejorado */
+  color: #ffffff; /* Texto blanco */
+  margin: 0;
+  font-weight: 600; /* Mayor énfasis en el título */
+}
+
+mat-card-content {
+  padding: 1.5rem; /* Espacio adicional para mejorar la legibilidad */
+  color: rgb(33, 64, 75); /* Tono más oscuro para contraste */
+  text-align: justify;
+  line-height: 1.6; /* Mejor separación entre líneas */
+}
+
+mat-card-content h3 {
+  font-size: 1.5rem;
+  color: rgb(3, 54, 61); /* Tono más oscuro */
+  margin-top: 1rem;
+  font-weight: 500; /* Negrita moderada para subtítulos */
+}
+
+mat-card-content p {
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente mayor */
+  margin-bottom: 1.2rem; /* Espacio adicional al final de los párrafos */
+}
+
+@media (max-width: 600px) {
+  .result-card {
+    margin: 1rem;
+    max-width: 100%;
+  }
+
+  mat-card-header h2 {
+    font-size: 1.5rem;
+  }
+
+  mat-card-content h3 {
+    font-size: 1.3rem; /* Mayor legibilidad en dispositivos móviles */
+  }
+
+  mat-card-content p {
+    font-size: 1rem; /* Ajuste proporcional para párrafos */
+  }
+}

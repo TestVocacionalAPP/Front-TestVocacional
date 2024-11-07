@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Solicitar Asesoría</h2>
+<mat-dialog-content>
+  <form [formGroup]="solicitudForm">
+    <!-- Campo para el asunto -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Asunto</mat-label>
+      <input matInput formControlName="asunto" placeholder="Ingrese el asunto">
+      <mat-error *ngIf="solicitudForm.get('asunto')?.invalid && solicitudForm.get('asunto')?.touched">
+        El asunto es obligatorio y debe tener máximo 100 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo para la fecha solicitada con calendario -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Fecha Solicitada</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaSolicitada" placeholder="Seleccione una fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="solicitudForm.get('fechaSolicitada')?.invalid && solicitudForm.get('fechaSolicitada')?.touched">
+        La fecha es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo para la descripción -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" placeholder="Describa brevemente la asesoría requerida"></textarea>
+      <mat-error *ngIf="solicitudForm.get('descripcion')?.invalid && solicitudForm.get('descripcion')?.touched">
+        La descripción es obligatoria y debe tener máximo 500 caracteres.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="!solicitudForm.valid" (click)="enviarSolicitud()">Enviar</button>
+</mat-dialog-actions>

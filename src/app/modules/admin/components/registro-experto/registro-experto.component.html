@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow">
+    <h2 class="text-center mb-4">Crear Experto</h2>
+    <form (ngSubmit)="crearExperto()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="expertoData.nombre" name="nombre" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Apellido</mat-label>
+            <input matInput [(ngModel)]="expertoData.apellido" name="apellido" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Teléfono</mat-label>
+            <input matInput [(ngModel)]="expertoData.telefono" name="telefono" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Correo</mat-label>
+            <input matInput type="email" [(ngModel)]="expertoData.correo" name="correo" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" [(ngModel)]="expertoData.password" name="password" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Especialidad</mat-label>
+            <input matInput [(ngModel)]="expertoData.especialidad" name="especialidad" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Descripción</mat-label>
+            <input matInput [(ngModel)]="expertoData.descripcion" name="descripcion" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Tarifa</mat-label>
+            <input matInput type="number" [(ngModel)]="expertoData.tarifa" name="tarifa" required />
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 text-center mt-4">
+          <button mat-raised-button color="primary" type="submit">Crear Experto</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="app-name">Test vocacional</span>
+  <span class="example-spacer"></span>
+
+  <button *ngIf="isLoggedIn()" mat-button routerLink="/user" aria-label="Test Chaside">
+    Test chaside
+  </button>
+
+  <button *ngIf="isLoggedIn()" mat-button routerLink="/user/ver" aria-label="Ver Expertos">
+    Expertos
+  </button>
+
+  <button *ngIf="isLoggedIn()" mat-button routerLink="/user/recursos-educativos" aria-label="Recursos educativos">
+    Recursos
+  </button>
+
+  <!-- Botón de notificaciones -->
+  <button *ngIf="isLoggedIn()" mat-icon-button aria-label="Notificaciones" [matMenuTriggerFor]="notificacionesMenu">
+    <mat-icon>notifications</mat-icon>
+    <span *ngIf="tieneNotificaciones()" class="notification-badge">{{ notificaciones.length }}</span>
+  </button>
+
+  <!-- Menú de notificaciones -->
+  <mat-menu #notificacionesMenu="matMenu">
+    <ng-container *ngIf="tieneNotificaciones(); else noNotificaciones">
+      <button mat-menu-item *ngFor="let notificacion of notificaciones">
+        <mat-icon>notifications_active</mat-icon>
+        {{ notificacion }}
+      </button>
+    </ng-container>
+    <ng-template #noNotificaciones>
+      <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        No hay notificaciones
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!-- Menú de usuario (tuerca) -->
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/user/profile">
+      <mat-icon>account_circle</mat-icon>
+      <span>Ver perfil</span>
+    </button>
+    <button mat-menu-item routerLink="/user/historial">
+      <mat-icon>history</mat-icon>
+      <span>Historial de Test</span>
+    </button>
+    <button mat-menu-item routerLink="/user/historial-pagos">
+      <mat-icon>payment</mat-icon>
+      <span>Historial de Pagos</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+
+  <!-- Botón de menú de usuario -->
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="isLoggedIn()" aria-label="Menú de usuario">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="toolbar-underline"></div>
+
+<router-outlet></router-outlet>

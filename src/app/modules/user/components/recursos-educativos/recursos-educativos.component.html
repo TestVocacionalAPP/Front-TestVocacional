@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Recursos Educativos</h2>
+
+  <!-- Barra de búsqueda -->
+  <div class="d-flex justify-content-center mb-4">
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Buscar Recursos</mat-label>
+      <input matInput [(ngModel)]="searchText" (ngModelChange)="buscarRecursos()" placeholder="Escribe para buscar" />
+    </mat-form-field>
+  </div>
+
+  <!-- Lista de recursos -->
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" *ngFor="let recurso of recursosFiltrados">
+      <mat-card class="mat-elevation-z2 card-container">
+        <mat-card-header>
+          <mat-card-title>{{ recurso.titulo }}</mat-card-title>
+          <mat-card-subtitle>{{ recurso.tipoRecurso }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p class="descripcion-clamp">{{ recurso.descripcion }}</p>
+
+          <!-- Mostrar categoría y precio -->
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span *ngIf="recurso.categoriaRecurso === 'PREMIUM'" class="premium-badge">
+              <mat-chip color="warn" selected>Premium</mat-chip>
+            </span>
+            <span *ngIf="recurso.categoriaRecurso === 'GRATUITO'" class="free-badge">
+              <mat-chip color="primary" selected>Gratuito</mat-chip>
+            </span>
+            <span *ngIf="recurso.categoriaRecurso === 'PREMIUM'">
+              <strong>Precio:</strong> S/ {{ recurso.precio }}
+            </span>
+          </div>
+
+          <!-- Imagen en miniatura de YouTube si es un video -->
+          <img *ngIf="recurso.tipoRecurso === 'VIDEO' && getYoutubeThumbnail(recurso.urlRecurso)"
+            [src]="getYoutubeThumbnail(recurso.urlRecurso)" alt="Vista previa del video"
+            [class.disabled-thumbnail]="recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso"
+            (click)="recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso ? null : openVideoInNewTab(recurso.urlRecurso)"
+            class="video-thumbnail mt-3">
+
+          <!-- Botones de acción -->
+          <div class="d-flex justify-content-between mt-3">
+            <button *ngIf="recurso.tieneAcceso" mat-raised-button color="primary"
+              (click)="openVideoInNewTab(recurso.urlRecurso)">
+              Ver Recurso
+            </button>
+            <button *ngIf="!recurso.tieneAcceso && recurso.categoriaRecurso === 'PREMIUM'" mat-raised-button
+              color="accent" (click)="comprarRecurso(recurso)">
+              Comprar Recurso
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Paginador -->
+  <div class="d-flex justify-content-center mt-4">
+    <mat-paginator [length]="recursos.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions" (page)="cambiarPagina($event)">
+    </mat-paginator>
+  </div>
+</div>

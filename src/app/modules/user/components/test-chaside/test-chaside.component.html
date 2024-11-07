@@ -1,0 +1,39 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center stretch">
+
+  <div class="intro-card">
+
+      <mat-card-header class="intro-header">
+        <h2>Cuestionario de Orientación Vocacional CHASIDE</h2>
+      </mat-card-header>
+      <mat-card-content class="intro-content">
+        <p>
+          ¿Te encuentras en el proceso de decidir tu futuro académico o profesional? Este cuestionario de {{
+          preguntas.length }} preguntas está diseñado para ayudarte a identificar tus intereses y aptitudes, brindándote
+          una visión más clara sobre las áreas que mejor se adaptan a ti. Responde sinceramente para obtener los
+          resultados más precisos y útiles.
+        </p>
+      </mat-card-content>
+
+  </div>
+
+
+  <mat-card *ngIf="preguntas.length > 0" class="question-card">
+    <mat-card-header class="card-header">
+      <h2>Pregunta {{ preguntaActual + 1 }} de {{ preguntas.length }}</h2>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <h3>{{ preguntas[preguntaActual].enunciado }}</h3>
+    </mat-card-content>
+    <div class="button-container">
+      <button mat-raised-button class="custom-button"
+        (click)="responder(preguntas[preguntaActual].idPregunta, true)">Sí</button>
+      <button mat-raised-button class="custom-button warn"
+        (click)="responder(preguntas[preguntaActual].idPregunta, false)">No</button>
+
+    </div>
+    <div class="nav-button-container">
+      <button mat-button class="nav-button" [disabled]="preguntaActual === 0"
+        (click)="anteriorPregunta()">Anterior</button>
+    </div>
+  </mat-card>
+</div>

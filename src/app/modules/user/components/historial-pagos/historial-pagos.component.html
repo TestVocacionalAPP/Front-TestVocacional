@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Historial de Compras</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let compra of historialCompras; let i = index">
+        <td>{{ i + 1 }}</td> <!-- Enumeración -->
+        <td>{{ compra.recursoTitulo }}</td>
+        <td>{{ compra.precio | currency }}</td>
+        <td>{{ compra.fecha | date: 'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

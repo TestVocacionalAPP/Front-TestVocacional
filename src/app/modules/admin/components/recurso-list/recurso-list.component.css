@@ -1,0 +1,29 @@
+.card-container {
+  width: 100%; /* O ajusta a max-width: 350px si deseas limitar el ancho */
+  min-height: 400px; /* Define una altura mínima establecida para la tarjeta */
+  max-height: 450px; /* Define una altura máxima para mantener el tamaño uniforme */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 180px; /* Altura máxima de la miniatura para mantener la proporción */
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.descripcion-clamp {
+  max-height: 7.5em; /* Ajusta para mostrar hasta 5 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin-bottom: 1em;
+  word-break: break-word;
+}

@@ -1,0 +1,34 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center stretch">
+  <mat-card class="result-card">
+    <mat-card-header>
+      <h2>Resultados del Test de Orientación Vocacional CHASIDE</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="mensajeIntereses">
+        <p>{{ mensajeIntereses }}</p>
+      </div>
+      <div *ngIf="mensajeCarreras">
+        <h3>Carreras Sugeridas</h3>
+        <p>{{ mensajeCarreras }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <h2>Observa e infórmate más</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let carrera of carrerasSugeridas">
+        <mat-card class="mb-4 carrera-card text-white">
+          <mat-card-header>
+            <mat-card-title class="text-white">{{ carrera.nombre }}</mat-card-title>
+            <mat-card-subtitle class="text-white">Categoría: {{ carrera.categoria }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{ carrera.descripcion }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

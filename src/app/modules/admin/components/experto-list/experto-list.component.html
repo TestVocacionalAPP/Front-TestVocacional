@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Lista de Expertos</h2>
+
+  <!-- Botón para abrir el formulario de creación de experto en un modal -->
+  <div class="text-center mb-4">
+    <button mat-raised-button color="primary" (click)="openCrearExpertoDialog()">Crear Experto</button>
+  </div>
+
+  <!-- Tabla para mostrar la lista de expertos -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Especialidad</th>
+        <th>Tarifa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let experto of expertos">
+        <td>{{ experto.nombre }}</td>
+        <td>{{ experto.apellido }}</td>
+        <td>{{ experto.telefono }}</td>
+        <td>{{ experto.correo }}</td>
+        <td>{{ experto.especialidad }}</td>
+        <td>{{ experto.tarifa | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Lista de Recursos Educativos</h2>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Barra de búsqueda -->
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Buscar Recursos</mat-label>
+      <input matInput [(ngModel)]="searchText" (ngModelChange)="filtrarRecursos()" placeholder="Escribe para buscar">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="openCrearRecursoDialog()">Crear Recurso Educativo</button>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" *ngFor="let recurso of recursosFiltrados">
+      <mat-card class="mat-elevation-z2 card-container">
+        <mat-card-header>
+          <mat-card-title>{{ recurso.titulo }}</mat-card-title>
+          <mat-card-subtitle>{{ recurso.tipoRecurso }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="descripcion-clamp">{{ recurso.descripcion }}</p>
+
+          <!-- Indicación de si el recurso es Premium o Gratuito -->
+          <p *ngIf="recurso.categoriaRecurso === 'PREMIUM'" class="premium-badge">Categoría: Premium</p>
+          <p *ngIf="recurso.categoriaRecurso === 'PREMIUM'"><strong>Precio:</strong> S/ {{ recurso.precio }}</p>
+          <p *ngIf="recurso.categoriaRecurso === 'GRATUITO'" class="gratis-badge">Categoría: Gratuito</p>
+
+          <!-- Imagen en miniatura de YouTube si es un video -->
+          <img *ngIf="getYoutubeThumbnail(recurso.urlRecurso)"
+               [src]="getYoutubeThumbnail(recurso.urlRecurso)"
+               alt="Video preview"
+               (click)="openVideoInNewTab(recurso.urlRecurso)"
+               class="video-thumbnail">
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-icon-button color="accent" (click)="openEditarRecursoDialog(recurso)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarRecurso(recurso.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

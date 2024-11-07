@@ -1,0 +1,45 @@
+<div class="payment-container">
+  <h2 class="text-center">Detalles de la Tarjeta</h2>
+  <form (ngSubmit)="realizarCompra()" #paymentForm="ngForm">
+
+    <!-- Número de Tarjeta -->
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Número de Tarjeta</mat-label>
+      <input matInput [(ngModel)]="numeroTarjeta" name="numeroTarjeta" required
+             maxlength="19" appMask="card" placeholder="1234 5678 9012 3456" />
+      <mat-error *ngIf="paymentForm.controls['numeroTarjeta']?.invalid && paymentForm.controls['numeroTarjeta']?.touched">
+        Ingresa un número de tarjeta válido.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de Vencimiento -->
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Fecha de Vencimiento</mat-label>
+      <input matInput [(ngModel)]="fechaVencimiento" name="fechaVencimiento" required maxlength="5"
+             appMask="expiry" placeholder="MM/AA" />
+      <mat-error *ngIf="paymentForm.controls['fechaVencimiento']?.invalid && paymentForm.controls['fechaVencimiento']?.touched">
+        Ingresa una fecha en formato MM/AA.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- CVV -->
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>CVV</mat-label>
+      <input matInput [(ngModel)]="cvv" name="cvv" maxlength="3" required type="password" />
+      <mat-error *ngIf="paymentForm.controls['cvv']?.invalid && paymentForm.controls['cvv']?.touched">
+        Ingresa un CVV de 3 dígitos.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Guardar Tarjeta -->
+    <mat-checkbox [(ngModel)]="guardarTarjeta" name="guardarTarjeta">Guardar tarjeta para futuras compras</mat-checkbox>
+
+    <!-- Botones -->
+    <div class="button-group text-center">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!paymentForm.valid">Confirmar Compra</button>
+      <button mat-button type="button" (click)="close()">Cancelar</button>
+      <!-- Botón para eliminar tarjeta guardada -->
+      <button *ngIf="tarjetaGuardada" mat-button color="warn" type="button" (click)="eliminarTarjetaGuardada()">Eliminar tarjeta guardada</button>
+    </div>
+  </form>
+</div>

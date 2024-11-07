@@ -1,0 +1,22 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="app-name">Test vocacional Bienvenido Admin</span>
+  <span class="example-spacer"></span>
+
+
+
+  <mat-menu #userMenu="matMenu">
+    
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="isLoggedIn()" aria-label="Menú de usuario">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="toolbar-underline"></div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,46 @@
+<div class="container mt-2">
+  <h2 class="text-center mb-2">Carreras</h2>
+
+  <!-- Barra de búsqueda -->
+  <mat-form-field appearance="outline" class="search-bar w-75">
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Buscar</mat-label>
+    <input matInput placeholder="Escribe tu búsqueda" [(ngModel)]="searchText" (ngModelChange)="filtrarCarreras()" class="search-input">
+    <button mat-icon-button matSuffix (click)="clearSearch()" *ngIf="searchText">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <!-- Tarjetas de carreras en grid -->
+  <div class="grid-container">
+    <div class="carrera-card" *ngFor="let carrera of carrerasFiltradas">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="avatar">
+            <mat-icon>school</mat-icon>
+          </div>
+          <mat-card-title>{{ carrera.nombre }}</mat-card-title>
+          <mat-card-subtitle>Categoría: {{ carrera.categoria }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="image-container">
+          <img mat-card-image [src]="carrera.imagen || 'assets/orientacion-es-vocacion-taller-de-orientacion-vocacional.png'" alt="Imagen de carrera" />
+        </div>
+        <mat-card-content>
+          <p class="descripcion-clamp">{{ carrera.descripcion }}</p>
+        </mat-card-content>
+        <mat-card-actions class="justify-content-center">
+          <button mat-raised-button color="primary">Detalles</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Paginador -->
+  <mat-paginator
+    [length]="carreras.length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="cambiarPagina($event)">
+  </mat-paginator>
+</div>

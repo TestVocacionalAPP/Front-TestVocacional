@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Lista de Expertos</h2>
+  <div class="mb-3">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Buscar por especialidad</mat-label>
+      <input matInput (input)="filtrarExpertos($event)" placeholder="Ingrese nombre o especialidad">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let experto of expertosFiltrados | slice:(pageIndex * pageSize):(pageIndex * pageSize + pageSize)">
+      <mat-card class="h-100">
+        <!-- Mostrar imagen si existe, sino una imagen por defecto -->
+        <img mat-card-image
+             [src]="experto.imagenBase64 ? 'data:image/jpeg;base64,' + experto.imagenBase64 : 'assets/default-expert-image.png'"
+             alt="Foto de {{ experto.nombre }}"
+             class="mb-3">
+        <mat-card-header>
+          <mat-card-title>{{ experto.nombre }} {{ experto.apellido }}</mat-card-title>
+          <mat-card-subtitle>{{ experto.especialidad }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Descripción:</strong> {{ experto.descripcion }}</p>
+          <p><strong>Tarifa:</strong> ${{ experto.tarifa }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="contactarExperto(experto)">Contactar</button>
+          <button mat-raised-button color="accent" [routerLink]="['/user/ver/detalle', experto.id]">Ver Detalles</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Paginador -->
+  <mat-paginator [length]="expertosFiltrados.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[3, 6, 9]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

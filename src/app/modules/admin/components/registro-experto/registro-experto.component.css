@@ -1,0 +1,71 @@
+/* Estilo general del contenedor del formulario */
+.crear-experto-container {
+  max-width: 100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tarjeta de formulario */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+}
+
+/* Estilos de encabezado */
+.card h2 {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Espaciado entre campos de formulario */
+.mat-form-field {
+  margin-bottom: 15px;
+}
+
+/* Input y etiquetas */
+.mat-form-field label {
+  font-weight: 500;
+  color: #555;
+}
+
+.mat-input-element {
+  color: #333;
+}
+
+/* Botón de enviar */
+button[type="submit"] {
+  font-size: 1rem;
+  padding: 10px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Badge de notificación en el botón */
+.notification-badge {
+  background-color: #ff5252;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .crear-experto-container {
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
