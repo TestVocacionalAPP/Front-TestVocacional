@@ -3,7 +3,18 @@
   <div *ngIf="isLoading" class="loading-container">
     <mat-spinner></mat-spinner>
     <p>Enviando respuestas, por favor espera...</p>
+
+    <!-- Aquí se añade el video debajo del spinner -->
+    <video
+      src="assets/pug-dance.mp4"
+      class="loading-video"
+      autoplay
+      muted
+      loop
+      playsinline>
+    </video>
   </div>
+
 
   <!-- Introducción del cuestionario -->
   <div class="intro-card" *ngIf="!isLoading">
@@ -29,16 +40,12 @@
 
     <!-- Botones para responder Sí/No con selección basada en la respuesta guardada -->
     <div *ngIf="!mostrarBotonEnviar" class="button-container">
-      <button
-        mat-raised-button
-        class="custom-button"
+      <button mat-raised-button class="custom-button"
         [ngClass]="{'selected': obtenerRespuesta(preguntas[preguntaActual].idPregunta) === 1}"
         (click)="responder(preguntas[preguntaActual].idPregunta, true)">
         Sí
       </button>
-      <button
-        mat-raised-button
-        class="custom-button warn"
+      <button mat-raised-button class="custom-button warn"
         [ngClass]="{'selected': obtenerRespuesta(preguntas[preguntaActual].idPregunta) === 0}"
         (click)="responder(preguntas[preguntaActual].idPregunta, false)">
         No
@@ -51,6 +58,13 @@
       <button mat-raised-button color="primary" class="submit-button" (click)="enviarRespuestas()">
         Enviar Test
       </button>
+    </div>
+    <!-- Indicador de carga mientras se envían las respuestas -->
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Enviando respuestas, por favor espera...</p>
+      <!-- Aquí se añade el GIF debajo del spinner -->
+      <img src="./../../../../../assets/pug-dance.mp4" alt="Cargando..." class="loading-gif">
     </div>
 
     <!-- Botón Anterior, solo visible cuando no se muestra el botón de Enviar Test -->
