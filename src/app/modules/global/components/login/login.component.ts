@@ -85,9 +85,7 @@ export class LoginComponent {
               this.router.navigate(['/admin/registroTest']);
             } else if (role === 'EXPERTO') {
               this.router.navigate(['/experto']);
-            } else {
-              Swal.fire('Error', 'Rol no autorizado.', 'error');
-            }
+            } 
           });
         } else {
           Swal.fire(
