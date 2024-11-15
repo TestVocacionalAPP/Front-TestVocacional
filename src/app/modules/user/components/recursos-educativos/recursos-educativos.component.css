@@ -1,41 +1,43 @@
-/* Contenedor de la tarjeta */
+/* Contenedor general de las tarjetas */
 .card-container {
-  width: 100%;
-  max-width: 300px; /* Ancho fijo para una apariencia consistente */
-  min-height: 350px;
-  max-height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: auto;
   padding: 20px;
-  box-sizing: border-box;
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  background-color: #f9f9f9;
 }
 
 .card-container:hover {
-  transform: translateY(-4px); /* Eleva el card al pasar el ratón */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Imagen de miniatura de video */
+/* Grid de tarjetas */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Estilos para la imagen de miniatura */
 .video-thumbnail {
   width: 100%;
-  height: auto;
-  max-height: 180px;
+  height: 180px;
   border-radius: 8px;
-  cursor: pointer;
   object-fit: cover;
+  cursor: pointer;
   margin-top: 8px;
 }
 
-/* Barra de búsqueda */
-.search-bar {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 20px;
+/* Desactivar la miniatura si es Premium y el usuario no tiene acceso */
+.disabled-thumbnail {
+  filter: grayscale(100%);
+  cursor: not-allowed;
 }
 
 /* Limitar la descripción a un máximo de 5 líneas */
@@ -45,41 +47,38 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: break-word;
-  margin-top: 10px;
-  font-size: 1rem;
-  color: #444; /* Color suave para el texto */
-  line-height: 1.4;
+  margin-bottom: 1em;
+  color: #4a4a4a;
 }
 
-/* Estilos para categorías */
-.premium-badge,
-.free-badge {
-  display: inline-block;
-  font-size: 0.85rem;
-  padding: 4px 8px;
-  border-radius: 12px;
-  margin-top: 8px;
-}
-
-.premium-badge {
-  color: #d9534f;
-  background-color: rgba(217, 83, 79, 0.1);
-}
-
-.free-badge {
-  color: #5cb85c;
-  background-color: rgba(92, 184, 92, 0.1);
-}
-
-/* Estilo de botón */
-button[mat-button] {
-  font-size: 0.9rem;
+/* Centrando los botones y mejorando su estilo */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
   margin-top: 12px;
 }
 
-.disabled-thumbnail {
-  cursor: not-allowed;
+.btn-ver-recurso {
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+button[mat-raised-button] {
+  flex: 1;
+  max-width: 150px;
+  font-size: 0.9rem;
+}
 
 
+
+
+
+/* Barra de búsqueda */
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
 }

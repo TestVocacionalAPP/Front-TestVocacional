@@ -1,2 +1,2 @@
-let baserUrl = 'https://back-testvocacional.fly.dev'
+let baserUrl = 'http://localhost:8080'
 export default baserUrl;
