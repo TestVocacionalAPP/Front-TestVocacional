@@ -1,12 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import material theme */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  /*background-color: rgb(214, 238, 242);*/
+  font-family: 'Roboto', sans-serif;
 }
+
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: #0e6364 !important;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Wave animation at the bottom */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 25vw;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420"><path fill="%230e6364" fill-opacity="1" d="M0,192L16,186.7C32,181,64,171,96,181.3C128,192,160,224,192,234.7C224,245,256,235,288,224C320,213,352,203,384,186.7C416,171,448,149,480,149.3C512,149,544,171,576,181.3C608,192,640,192,672,186.7C704,181,736,171,768,186.7C800,203,832,245,864,245.3C896,245,928,203,960,170.7C992,139,1024,117,1056,133.3C1088,149,1120,203,1152,213.3C1184,224,1216,192,1248,170.7C1280,149,1312,139,1344,117.3C1376,96,1408,64,1424,48L1440,32L1440,420L1424,420C1408,420,1376,420,1344,420C1312,420,1280,420,1248,420C1216,420,1184,420,1152,420C1120,420,1088,420,1056,420C1024,420,992,420,960,420C928,420,896,420,864,420C832,420,800,420,768,420C736,420,704,420,672,420C640,420,608,420,576,420C544,420,512,420,480,420C448,420,416,420,384,420C352,420,320,420,288,420C256,420,224,420,192,420C160,420,128,420,96,420C64,420,32,420,16,420L0,420Z"></path></svg>') no-repeat center bottom;
+  background-size: 100% auto;
+  animation: floatWave 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Wave on the left */
+body::before {
+  left: 0;
+  animation-delay: 0s;
+}
+
+/* Wave on the right */
+body::after {
+  right: 0;
+  animation-delay: 3s;
+}
+
+/* Wave floating animation */
+@keyframes floatWave {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(5%) scale(1.10);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+

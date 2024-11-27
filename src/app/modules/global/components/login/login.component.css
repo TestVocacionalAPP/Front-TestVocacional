@@ -1,19 +1,19 @@
+/* Contenedor general */
 .container {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   padding: 20px;
-  background-color: #fff;
+  background: #ffffff; /* Fondo sólido */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-h4 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-/* Estilo para los botones de alternancia (Login/Registro) */
+/* Botones de alternancia (Login/Registro) */
 .auth-buttons {
   display: flex;
   justify-content: space-around;
@@ -25,93 +25,140 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
-/* Mensajes de error */
-.text-danger {
-  color: #ff4a4a;
-  font-size: 12px;
-  margin-top: 5px; /* Ajuste de espacio */
-  margin-left: 10px; /* Opcional: alinearlo con el input */
-}
-/* Botones de acción (Iniciar sesión/Registrarse) */
-.btn {
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(3, 54, 61);
+  background-color: rgba(14, 99, 100, 0.8);
   color: white;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: rgb(56, 95, 113);
-}
-
-.modal-footer button {
-  padding: 8px 16px;
-}
-/* Contenedor para inputs */
-.input-container {
-  position: relative;
-  margin-bottom: 10px;
-}
-
-/* Input y diseño general */
-.input-container input {
-  width: 100%;
-  padding-left: 40px; /* Espacio para el icono */
-  padding-right: 10px;
-  height: 40px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-/* Icono dentro del input */
-.input-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%; /* Mantiene el icono centrado verticalmente */
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: #888;
-  pointer-events: none; /* No interferir con el input */
-}
-
-/* Mensajes de error */
-.text-danger {
-  color: #ff4a4a;
-  font-size: 12px;
-  margin-top: 5px; /* Ajuste de espacio */
-  margin-left: 10px; /* Opcional: alinearlo con el input */
-}
-
-.form-style {
-  font-size: 16px;
-  padding: 10px;
-}
-
-button {
-  padding: 10px;
-  width: 100%;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #1565c0;
+  background-color: rgba(14, 99, 100, 1);
 }
 
 button:focus {
   outline: none;
+}
+
+/* Estilo para los mensajes de error */
+.text-danger {
+  color: #ff4a4a;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/* Botón de acción (Iniciar sesión/Registrarse) */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(14, 99, 100, 0.8);
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: rgba(14, 99, 100, 1);
+}
+
+/* Pestañas */
+.nav-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-pills .nav-link {
+  min-width: 160px;
+  text-align: center;
+  margin: 0;
+  padding: 10px 15px;
+  color: #0e6364;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  color: white;
+  background-color: rgba(14, 99, 100, 0.8);
+  border-radius: 4px;
+}
+
+/* Contenido de las pestañas */
+.tab-content {
+  padding-top: 20px;
+  min-height: 400px;
+}
+
+/* Inputs */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 10px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #ffffff; /* Fondo sólido */
+  color: #000000;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-container input:focus {
+  border-color: #0e6364;
+  background-color: #f1f1f1; /* Fondo más claro en foco */
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%; /* Centrado vertical */
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Estilo para los mensajes de error */
+.text-danger {
+  color: #ff4a4a;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.input-container .text-danger {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
+/* Modal */
+.modal-content {
+  background-color: #ffffff; /* Fondo sólido */
+  border-radius: 12px;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-footer {
+  background-color: #f1f1f1; /* Fondo claro para el pie del modal */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }

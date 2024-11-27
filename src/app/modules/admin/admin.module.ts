@@ -19,6 +19,9 @@ import { RecursoListComponent } from './components/recurso-list/recurso-list.com
 import { MatTableModule } from '@angular/material/table';
 import { SafeUrlPipe } from 'src/app/pipes/SafeUrlPipe';
 import { MatCardModule } from '@angular/material/card';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {GlobalModule} from "../global/global.module";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule,
+    GlobalModule,
+    MatTabsModule
   ],
   exports: [SafeUrlPipe]
 })

@@ -1,38 +1,80 @@
+/* Estilo de la caja principal */
 .container {
-  padding: 2rem;
-  max-width: 8500px;
+  padding: 3rem;
+  max-width: 900px;
   margin: auto;
+  border-radius: 12px;
 }
 
+/* Estilo del contenedor del título */
 .title-container {
-  background-color: rgb(3, 54, 61);
+  background-color: #0e6364; /* Tono de azul grisáceo oscuro */
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 32px;
   text-align: center;
-  margin-bottom: 1.5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-bottom: 2rem;
 }
 
+/* Estilo del título */
 .title-container h1 {
   margin: 0;
-  font-size: 2rem;
-  color: white;
+  font-size: 2.2rem;
+  color: white; /* Texto blanco para buen contraste */
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
+.card {
+  border-radius: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff; /* Fondo sólido */
+  padding: 1.5rem;
+}
+
+/* Centrado de texto */
 .text-center {
   display: flex;
   justify-content: center;
 }
 
+/* Estilo de las listas dentro del mat-card */
+mat-card-content ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+mat-card-content li {
+  margin-bottom: 0.5rem;
+  color: #0e6364; /* Tono gris oscuro para las listas */
+  line-height: 1.5;
+}
+
+/* Estilo del botón */
 .custom-button {
   font-size: 1.1rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  padding: 0.75rem 2rem;
+  border-radius: 20px;
+  background-color: #0e6364; /* Tono más claro y suave que el fondo */
+  color: white;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Animación suave para hover */
+  border: none; /* Sin borde para hacerlo más limpio */
+  text-transform: uppercase;
 }
 
 .custom-button:hover {
-  background-color:rgb(214, 238, 242);
-  color: rgb(3, 54, 61);;
+  background-color: #0d5958; /* Color más brillante al pasar el mouse */
+  color: white; /* Cambio de color de texto para un buen contraste con el fondo */
+  transform: translateY(-3px); /* Efecto sutil de "levitar" */
+}
+
+.custom-button:active {
+  transform: translateY(1px); /* Efecto de pulsar el botón */
+}
+
+/* Centro del loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Altura para que se vea centrado */
 }

@@ -3,6 +3,8 @@ import { RecursoResponseDTO, RecursoService } from 'src/app/services/RecursoServ
 import { PagoRecursoComponent } from '../pago-recurso/pago-recurso.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-recursos-educativos',
@@ -13,6 +15,7 @@ export class RecursosEducativosComponent implements OnInit {
   recursos: RecursoResponseDTO[] = [];
   recursosFiltrados: RecursoResponseDTO[] = [];
   searchText: string = '';
+  loading: boolean = true;
 
   // Configuración de paginación
   pageSize = 6;
@@ -29,6 +32,7 @@ export class RecursosEducativosComponent implements OnInit {
   listarRecursos(): void {
     this.recursoService.listarRecursos().subscribe({
       next: (recursos) => {
+        this.loading = false;
         this.recursos = recursos;
         this.actualizarEstadoRecursos();
         this.filtrarRecursos();
@@ -118,14 +122,36 @@ export class RecursosEducativosComponent implements OnInit {
         }).subscribe({
           next: () => {
             recurso.tieneAcceso = true;
-            alert('Compra realizada con éxito. Ahora tienes acceso al recurso.');
+            Swal.fire({
+              title: 'Compra realizada con éxito',
+              text: 'Ahora tienes acceso al recurso.',
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#0e6364',
+            });
             this.actualizarEstadoRecursos();
           },
-          error: (error) => console.error('Error al comprar el recurso:', error)
+          error: (error) => {
+            console.error('Error al comprar el recurso:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'Hubo un problema al procesar tu compra. Intenta de nuevo.',
+              icon: 'error',
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#0e6364',
+            });
+          }
         });
       } else {
-        alert('Compra cancelada.');
+        Swal.fire({
+          title: 'Compra cancelada',
+          text: 'No se ha realizado ninguna compra.',
+          icon: 'info',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#0e6364',
+        });
       }
     });
+
   }
 }

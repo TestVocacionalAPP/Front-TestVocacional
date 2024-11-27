@@ -5,6 +5,10 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbardExpertoComponent } from './components/navbard-experto/navbard-experto.component';
 import { NavbardAdminComponent } from './components/navbard-admin/navbard-admin.component';
 import { NavbardComponent } from './components/navbard/navbard.component';
+import {UserGuard} from "../../guards/UserGuard";
+import {AdminGuard} from "../../guards/AdminGuard";
+import {ExpertoGuard} from "../../guards/ExpertoGuard";
+import {AuthGuard} from "../../guards/AuthGuard";
 
 export const globalRoutes: Routes = [
   {

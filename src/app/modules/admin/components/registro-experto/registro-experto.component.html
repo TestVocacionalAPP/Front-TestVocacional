@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 crear-experto-container">
   <div class="card p-4 shadow">
     <h2 class="text-center mb-4">Crear Experto</h2>
     <form (ngSubmit)="crearExperto()">
@@ -60,7 +60,9 @@
         </div>
 
         <div class="col-12 text-center mt-4">
-          <button mat-raised-button color="primary" type="submit">Crear Experto</button>
+          <button mat-raised-button color="primary" type="submit" class="btn-crear-experto">
+            Crear Experto
+          </button>
         </div>
       </div>
     </form>

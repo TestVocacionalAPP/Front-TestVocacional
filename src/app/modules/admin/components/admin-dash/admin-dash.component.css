@@ -1,27 +1,98 @@
+/* Estilo para la barra lateral */
 .sidebar {
-
-  background-color: #2c3e50; /* Azul oscuro */
+  background-color: #0b4747; /* Azul oscuro */
+  display: block;
+  position: relative;
+  top: -2px;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1879 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="%230e6364" d="M 0 0 L 950 110 L 950 0 L 0 0 Z" stroke-width="0"></path> <path fill="%230e6364" d="M 949 110 L 1869 7 L 1869 0 L 949 0 Z" stroke-width="0"></path> </svg>');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom ;
+  height: 100vh; /* Asegura que la barra lateral ocupe toda la altura */
+  width: 30vh;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para un efecto flotante */
 }
 
+
+/* Títulos de la barra lateral */
+.sidebar h3 {
+  color: #ecf0f1; /* Blanco suave */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+
+/* Estilo de los enlaces de la barra lateral */
 .sidebar .mat-nav-list a {
   color: #ecf0f1; /* Blanco suave */
   font-weight: 500;
   display: block;
   text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
+/* Estilo al pasar el mouse sobre los enlaces */
 .sidebar .mat-nav-list a:hover {
-  background-color: #34495e; /* Azul un poco más claro */
+  background-color: #0e6364; /* Azul un poco más claro */
+  padding-left: 25px; /* Añade un desplazamiento hacia la izquierda para dar efecto de "sangría" */
 }
 
-
+/* Iconos de la barra lateral */
 mat-icon {
   vertical-align: middle;
+  color: #ecf0f1;
 }
-main {
 
+/* Estilo para la sección principal (contenido) */
+main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  padding: 20px;
 }
+
+/* Para asegurar que los títulos sean legibles y bien distribuidos */
+h3, h4, h5 {
+  font-weight: 600;
+  color: #0e6364; /* Azul oscuro */
+}
+
+/* Estilo para los botones en la barra lateral */
+mat-button {
+  font-size: 1rem;
+}
+
+/* Barra lateral en pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Ocultamos la barra lateral en pantallas pequeñas */
+  }
+
+  .mat-tab-group {
+    margin-bottom: 20px; /* Espacio entre las tabs y el contenido */
+  }
+
+  .mat-tab-label {
+    font-size: 1rem;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .mat-tab-label-active {
+    background-color: #0e6364; /* Cambiar color al tab activo */
+  }
+}
+
+/* Barra lateral en pantallas grandes */
+@media (min-width: 768px) {
+  .sidebar {
+    width: 30vh;
+  }
+}
+
+
+
+

@@ -1,22 +1,154 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
 .custom-toolbar {
-  background-color: rgb(214, 238, 242);
-  color: rgb(3, 54, 61);
-  padding: 0 16px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
   height: 64px;
 }
 
 .app-name {
   font-size: 1.4rem;
-  font-weight: bold;
+  font-weight: 700;
+  color: #2c3e50;
   letter-spacing: 0.05rem;
+  margin-right: 8px;
 }
 
-.toolbar-underline {
-  height: 4px;
-  background-color: rgb(3, 54, 61);
-  width: 100%;
+.welcome-text {
+  font-size: 1rem;
+  color: #666;
+  margin-left: 8px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-btn {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+button.mat-icon-button {
+  color: #2c3e50;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+
+  &:hover {
+    background-color: rgba(44, 62, 80, 0.1);
+  }
+}
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: #2c3e50;
+  cursor: pointer;
+  padding: 8px;
+
+  mat-icon {
+    font-size: 24px;
+  }
+}
+
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 74px;
+  left: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav.open {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav-content {
+  padding: 8px 0;
+
+  button {
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+
+    mat-icon {
+      margin-right: 12px;
+    }
+
+    &:hover {
+      background-color: rgba(44, 62, 80, 0.1);
+    }
+  }
+}
+
+.mobile-badge {
+  background: #e74c3c;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .app-name {
+    font-size: 1.2rem;
+  }
+
+  .welcome-text {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .custom-toolbar {
+    padding: 0 16px;
+    height: 56px;
+  }
 }

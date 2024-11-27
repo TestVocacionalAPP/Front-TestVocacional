@@ -1,71 +1,78 @@
-/* Estilo general del contenedor del formulario */
+/* Contenedor principal */
 .crear-experto-container {
-  max-width: 100px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
 /* Tarjeta de formulario */
 .card {
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
 }
 
-/* Estilos de encabezado */
+/* Encabezado */
 .card h2 {
   font-size: 1.8rem;
-  color: #333;
-  font-weight: 500;
+  color: #0e6364;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Espaciado entre campos de formulario */
+/* Campos de formulario */
 .mat-form-field {
   margin-bottom: 15px;
 }
 
-/* Input y etiquetas */
-.mat-form-field label {
-  font-weight: 500;
-  color: #555;
+.mat-form-field .mat-label {
+  font-weight: 600;
+  color: #0e6364;
 }
 
 .mat-input-element {
-  color: #333;
+  color: #0e6364;
 }
 
-/* Botón de enviar */
-button[type="submit"] {
+.mat-form-field.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #e8f5e9;
+  border-radius: 5px;
+}
+
+.mat-form-field.mat-form-field-appearance-fill .mat-form-field-outline {
+  color: #047857;
+}
+
+/* Botón */
+button.btn-crear-experto {
   font-size: 1rem;
-  padding: 10px 30px;
+  padding: 12px 30px;
   border-radius: 25px;
-  transition: all 0.3s ease;
+  background-color: #0e6364;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
-  color: #fff;
+button.btn-crear-experto:hover {
+  background-color: #0e6364;
+  transform: translateY(-2px);
+  cursor: pointer;
 }
 
-/* Badge de notificación en el botón */
-.notification-badge {
-  background-color: #ff5252;
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  position: absolute;
-  top: -5px;
-  right: -5px;
+button.btn-crear-experto:active {
+  transform: translateY(0);
 }
 
-/* Ajustes para dispositivos móviles */
+/* Ajustes responsivos */
 @media (max-width: 768px) {
   .crear-experto-container {
-    padding: 10px;
+    padding: 15px;
   }
 
-  button[type="submit"] {
+  button.btn-crear-experto {
     width: 100%;
   }
 }

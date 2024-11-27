@@ -17,6 +17,8 @@ export class ExpertosComponent implements OnInit {
   expertosFiltrados: Experto[] = [];
   pageIndex: number = 0;
   pageSize: number = 3;
+  loading: boolean = true;
+
 
   constructor(private expertoService: ExpertoService, private dialog: MatDialog,private router: Router) {}
 
@@ -29,6 +31,7 @@ export class ExpertosComponent implements OnInit {
       (data: Experto[]) => {
         this.expertos = data;
         this.expertosFiltrados = data; // Inicializa los expertos filtrados con todos los datos
+        this.loading = false;
       },
       (error) => {
         console.error('Error al obtener expertos:', error);
@@ -67,7 +70,8 @@ export class ExpertosComponent implements OnInit {
           title: 'Solicitud Enviada',
           text: 'Tu solicitud de asesoría fue enviada con éxito.',
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#0e6364',
         });
       } else {
         console.log('Solicitud cancelada');

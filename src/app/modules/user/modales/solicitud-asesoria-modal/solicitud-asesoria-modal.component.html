@@ -34,5 +34,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-raised-button color="primary" [disabled]="!solicitudForm.valid" (click)="enviarSolicitud()">Enviar</button>
+  <button mat-raised-button [disabled]="!solicitudForm.valid" (click)="enviarSolicitud()">Enviar</button>
 </mat-dialog-actions>

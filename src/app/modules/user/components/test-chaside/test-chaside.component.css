@@ -1,44 +1,54 @@
+/* Estilo de la caja principal */
+.container {
+  padding: 3rem;
+  max-width: 900px;
+  margin: auto;
+  border-radius: 12px;
+}
 
+/* Estilo para las tarjetas de preguntas */
 .question-card {
   margin-bottom: 1.5rem;
-  border: 1px solid rgb(185, 210, 220);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 51, 51, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 51, 51, 0.1); /* Sombra suave */
+  background: #ffffff; /* Fondo sólido */
   min-height: 320px;
   max-width: 800px;
-  margin: auto;
-  background-color: #ffffff; /* Fondo de la tarjeta */
 }
 
+/* Estilo del encabezado de la tarjeta de pregunta */
 .card-header {
-  background-color: rgb(3, 54, 61); /* Tono oscuro */
-
+  background-color: #0e6364; /* Fondo sólido con tono de azul */
   text-align: center;
+  border-radius: 8px 8px 0 0;
+  padding: 1rem;
 }
 
+/* Estilo del texto dentro de la tarjeta */
 .card-header h2 {
   font-size: 1.6rem;
-  color: #ffffff; /* Texto blanco */
+  color: white;
   margin: 0;
 }
 
 .card-content {
-  height: 120px;
   text-align: justify;
-  color: rgb(33, 64, 75); /* Tono más oscuro para contraste */
+  color: rgb(33, 64, 75);
   margin-bottom: 1rem;
-}
-/* Estilos para centrar y estilizar el texto de las preguntas */
-.card-content h3 {
-  text-align: center;  /* Centrar el texto */
-  font-size: 1.4rem;   /* Ajustar el tamaño de fuente */
-  line-height: 1.6;    /* Espaciado entre líneas para mejor legibilidad */
-  color: rgb(33, 64, 75); /* Color oscuro para mejor contraste */
-  font-weight: bold;   /* Hacer el texto un poco más grueso */
-  margin: 1.5rem 0;    /* Margen superior e inferior */
-  padding: 0 1rem;     /* Espaciado horizontal */
+  padding: 1rem;
 }
 
+.card-content h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: rgb(33, 64, 75);
+  font-weight: bold;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+/* Botones de respuesta */
 .button-container {
   display: flex;
   justify-content: center;
@@ -47,16 +57,17 @@
 }
 
 .custom-button {
-  background-color: rgb(56, 95, 113); /* Azul suave */
+  background-color: rgb(56, 95, 113);
   color: white;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra sutil */
 }
 
 .custom-button:hover {
-  background-color: rgb(214, 238, 242);
+  background-color: rgb(47, 92, 97);
   transform: translateY(-2px);
 }
 
@@ -69,45 +80,22 @@
   transform: translateY(-2px);
 }
 
-.nav-button-container {
-  margin-top: 1rem;
-  text-align: center;
+/* Estilos de los botones seleccionados */
+.custom-button.selected {
+  background-color: rgb(52, 86, 90);
+  color: white;
+  border: 4px solid rgb(47, 92, 97);
+  transform: translateY(-2px);
 }
 
-.nav-button {
-  color: rgb(3, 54, 61);
-}
-.intro-card {
-
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
-}
-.intro-header {
-  color:rgb(3, 54, 61);
-  justify-content: center;
-}
-.intro-header h2 {
-   font-size: 2.4rem;
-   font-weight: bold;
-}
-.intro-content {
-  padding: 1rem;
-  color: rgb(3, 54, 61);
-  text-align: justify;
-}
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+.custom-button.warn.selected {
+  background-color: rgb(198, 56, 56);
+  color: white;
+  border: 4px solid #a83232;
+  transform: translateY(-2px);
 }
 
-mat-spinner {
-  margin-bottom: 10px;
-}
+/* Estilo para el botón de enviar el test */
 .submit-container {
   display: flex;
   justify-content: center;
@@ -117,34 +105,14 @@ mat-spinner {
 .submit-button {
   font-size: 1.2rem;
   padding: 1rem 2rem;
-  background-color: rgb(56, 95, 113);
+  background-color: #0e6364;
   color: white;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra sutil */
 }
 
-/* Estilos para resaltar el botón seleccionado (respuesta "Sí") */
-.custom-button.selected {
-  background-color: rgb(56, 168, 105); /* Verde oscuro para "Sí" */
-  color: white;
-  border: 4px solid #3e8e41; /* Borde verde */
-  transform: translateY(-2px);
-}
-
-/* Estilos para resaltar el botón seleccionado (respuesta "No") */
-.custom-button.warn.selected {
-  background-color: rgb(198, 56, 56); /* Rojo más oscuro para "No" */
-  color: white;
-  border: 4px solid #a83232; /* Borde rojo */
-  transform: translateY(-2px);
-}
-
-/* Efecto hover para botones */
-.custom-button:hover,
-.custom-button.warn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
+/* Estilos para el contenedor de carga (video, spinner) */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -153,11 +121,56 @@ mat-spinner {
   text-align: center;
   gap: 1rem;
   padding: 20px;
+  background: #ffffff; /* Fondo sólido */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
+/* Estilo del video en la carga */
 .loading-video {
-  width: 200px; /* Ajusta el tamaño según tu preferencia */
+  width: 200px;
   height: auto;
   margin-top: 10px;
   border-radius: 8px;
+}
+
+/* Estilo del GIF de carga */
+.loading-gif {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* Estilo del botón de navegación "anterior" */
+.nav-button-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.nav-button {
+  color: #0e6364;
+}
+
+/* Estilo de la tarjeta de introducción */
+.intro-card {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.intro-header {
+  color: #0e6364;
+  justify-content: center;
+}
+
+.intro-header h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.intro-content {
+  padding: 1rem;
+  color: #0e6364;
+  text-align: justify;
 }

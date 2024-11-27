@@ -1,22 +1,75 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
+/* Barra de navegación principal */
 .custom-toolbar {
-  background-color: rgb(214, 238, 242);
-  color: rgb(3, 54, 61);
-  padding: 0 16px;
-  height: 64px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100;
 }
 
+/* Nombre de la aplicación */
 .app-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: 0.05rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-right: auto;
 }
 
-.toolbar-underline {
-  height: 4px;
-  background-color: rgb(3, 54, 61);
+/* Botón de menú */
+.hamburger-menu {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: #34495e;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Menú móvil */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 10px;
   width: 100%;
+  z-index: 10;
+  flex-direction: column;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .app-name {
+    font-size: 1.2rem;
+  }
+
+  /* Ocultar botones normales */
+  button.mat-button {
+    display: none;
+  }
+
+  /* Mostrar menú hamburguesa */
+  .hamburger-menu {
+    display: block;
+  }
+
+  /* Icono más pequeño */
+  button.mat-icon-button {
+    padding: 6px;
+  }
 }

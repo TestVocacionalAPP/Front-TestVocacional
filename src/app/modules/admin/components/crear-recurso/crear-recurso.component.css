@@ -1,8 +1,83 @@
-/* crear-recurso.component.css */
+/* Estilo general del contenedor */
 .container {
-  max-width: 600px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
+/* Estilo para la tarjeta del formulario */
 .card {
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Título del formulario */
+.titulo-recurso {
+  font-size: 2rem;
+  color: #0e6364;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 30px;
+}
+
+/* Estilo para los campos del formulario */
+.mat-form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.mat-form-field label {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Botón de submit */
+button[type="submit"] {
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  background-color: #0e6364;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover {
+  background-color: #0e6364;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Estilo de los campos de texto */
+textarea.mat-input-element, input.mat-input-element {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Efectos de Hover en los campos */
+.mat-select:hover, .mat-input-element:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+/* Ajustes en dispositivos móviles */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }

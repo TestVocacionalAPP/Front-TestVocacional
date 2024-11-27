@@ -1,0 +1,85 @@
+/* Estilos generales para el historial */
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+/* Títulos */
+h2 {
+  font-size: 2rem;
+  color: #0e6364; /* Color personalizado */
+  font-weight: 600;
+}
+
+/* Centro del loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Altura para que se vea centrado */
+}
+
+/* Estilo de la tabla */
+table.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.mat-header-cell {
+  background-color: #0e6364;
+  color: white;
+  font-weight: bold;
+}
+
+.mat-cell {
+  background-color: #f9f9f9;
+}
+
+.mat-row:hover {
+  background-color: #f1f1f1;
+}
+
+/* Botones de acciones */
+.btn-download {
+  background-color: #0e6364;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.btn-download:hover {
+  background-color: #074b4a; /* Un tono más oscuro para el hover */
+}
+
+/* Mensajes de alerta */
+.alert {
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Tabla responsiva */
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .mat-header-cell, .mat-cell {
+    padding: 8px;
+  }
+}

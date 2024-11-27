@@ -8,6 +8,7 @@ import { CompraResponseDTO, RecursoService } from 'src/app/services/RecursoServi
 })
 export class HistorialComprasComponent implements OnInit {
   historialCompras: CompraResponseDTO[] = [];
+  loading: boolean = true;
 
   constructor(private recursoService: RecursoService) {}
 
@@ -19,9 +20,11 @@ export class HistorialComprasComponent implements OnInit {
     this.recursoService.obtenerHistorialCompras().subscribe(
       (data: CompraResponseDTO[]) => {
         this.historialCompras = data;
+        this.loading = false;  // Ocultar el spinner cuando los datos estén cargados
       },
       (error) => {
         console.error('Error al cargar el historial de compras:', error);
+        this.loading = false;  // También ocultamos el spinner si ocurre un error
       }
     );
   }

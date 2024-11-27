@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class NavbardComponent implements OnInit {
   notificaciones: string[] = []; // Array para almacenar las notificaciones
-  menuVisible = false;
+  menuOpen = false;  // Cambié menuVisible a menuOpen para usarlo consistentemente
 
   constructor(
     private authService: AuthService,
@@ -22,6 +22,7 @@ export class NavbardComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerNotificaciones(); // Llamada para cargar las notificaciones al iniciar
   }
+
 
   obtenerNotificaciones(): void {
     this.asesoriaService.verificarYNotificarCitas().subscribe(
@@ -34,8 +35,8 @@ export class NavbardComponent implements OnInit {
     );
   }
 
-  toggleMenu() {
-    this.menuVisible = !this.menuVisible;
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;  // Cambié a 'menuOpen'
   }
 
   logout(): void {
@@ -44,7 +45,7 @@ export class NavbardComponent implements OnInit {
       text: 'Estás a punto de cerrar sesión.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#0e6364',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, cerrar sesión',
       cancelButtonText: 'Cancelar'

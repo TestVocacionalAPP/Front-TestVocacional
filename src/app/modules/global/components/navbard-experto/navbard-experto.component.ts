@@ -12,12 +12,14 @@ import Swal from 'sweetalert2';
 })
 export class NavbardExpertoComponent implements OnInit {
   notificaciones: AsesoriaResponseDTO[] = []; // Array para almacenar notificaciones
+  menuOpen = false;  // Variable para controlar si el menú está abierto
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private expertoService: ExpertoService
   ) {}
+
 
   ngOnInit(): void {
     if (this.isLoggedIn()) {
@@ -38,7 +40,7 @@ export class NavbardExpertoComponent implements OnInit {
       text: 'Estás a punto de cerrar sesión.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#0e6364',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, cerrar sesión',
       cancelButtonText: 'Cancelar',
@@ -52,5 +54,9 @@ export class NavbardExpertoComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen; // Alternar el estado del menú
   }
 }

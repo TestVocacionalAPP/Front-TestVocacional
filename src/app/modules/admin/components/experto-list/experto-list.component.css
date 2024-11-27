@@ -1,0 +1,88 @@
+/* Estilo general del contenedor */
+.experto-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título de la lista */
+.titulo-lista {
+  font-size: 2rem;
+  color: #0e6364;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Botón "Crear Experto" */
+button.btn-crear-experto {
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 25px;
+  background-color: #0e6364;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button.btn-crear-experto:hover {
+  background-color: #045d5e;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+button.btn-crear-experto:active {
+  transform: translateY(0);
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.table th {
+  background-color: #0e6364;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Ajustes de responsive */
+@media (max-width: 768px) {
+  .experto-list-container {
+    padding: 15px;
+  }
+
+  .table th, .table td {
+    padding: 10px 12px;
+  }
+
+  button.btn-crear-experto {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
