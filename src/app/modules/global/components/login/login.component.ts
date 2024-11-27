@@ -75,7 +75,14 @@ export class LoginComponent {
           // Almacenar el token en localStorage (puedes también usar sessionStorage)
           localStorage.setItem('token', response.token);
 
-          Swal.fire('Éxito', 'Sesión iniciada correctamente.', 'success');
+          Swal.fire(
+            {
+              title: 'Inicio de sesión exitoso',
+              icon: 'success',
+              showConfirmButton: true,
+              confirmButtonColor: '#0e6364',
+            }
+          );
 
           this.authService.getRole().subscribe((role) => {
             console.log('Rol del usuario:', role);
@@ -85,7 +92,7 @@ export class LoginComponent {
               this.router.navigate(['/admin/registroTest']);
             } else if (role === 'EXPERTO') {
               this.router.navigate(['/experto']);
-            } 
+            }
           });
         } else {
           Swal.fire(
@@ -106,7 +113,7 @@ export class LoginComponent {
     );
   }
 
-  // Método para registrarse
+  // Metodo para registrarse
   onRegister() {
     if (this.registerForm.invalid) {
       Swal.fire('Error', 'Completa todos los campos correctamente.', 'error');
@@ -122,7 +129,12 @@ export class LoginComponent {
         this.switchMode(); // Cambia a la vista de login
       },
       (error) => {
-        Swal.fire('Error', 'Hubo un problema al crear la cuenta.', 'error');
+        Swal.fire({
+          title: 'Error al registrarse',
+          text: 'Hubo un problema al registrarse. Intenta nuevamente.',
+          icon: 'error',
+          confirmButtonColor: '#0e6364',
+        })
       }
     );
   }
@@ -132,6 +144,7 @@ export class LoginComponent {
         icon: 'error',
         title: 'Error en el formulario',
         text: 'Por favor, ingresa un correo válido.',
+        confirmButtonColor: '#0e6364',
       });
       return;
     }
@@ -143,6 +156,7 @@ export class LoginComponent {
           icon: 'success',
           title: 'Correo enviado',
           text: 'Revisa tu correo para restablecer tu contraseña.',
+          confirmButtonColor: '#0e6364',
         });
         this.hideModal('resetPasswordModal');
         this.showModal('validateTokenModal');
@@ -153,6 +167,7 @@ export class LoginComponent {
           icon: 'error',
           title: 'Error al restablecer contraseña',
           text: 'Hubo un problema. Intenta nuevamente.',
+          confirmButtonColor: '#0e6364',
         });
       }
     );
@@ -164,6 +179,7 @@ export class LoginComponent {
         icon: 'error',
         title: 'Error en el formulario',
         text: 'Por favor, ingresa el código correctamente.',
+        confirmButtonColor: '#0e6364',
       });
       return;
     }
@@ -180,6 +196,7 @@ export class LoginComponent {
             icon: 'error',
             title: 'Código inválido',
             text: 'El código de restablecimiento no es válido o ha expirado.',
+            confirmButtonColor: '#0e6364',
           });
         }
       },
@@ -189,6 +206,7 @@ export class LoginComponent {
           icon: 'error',
           title: 'Error al validar el código',
           text: 'Hubo un problema. Intenta nuevamente.',
+          confirmButtonColor: '#0e6364',
         });
       }
     );
@@ -213,6 +231,7 @@ export class LoginComponent {
           icon: 'success',
           title: 'Contraseña actualizada',
           text: 'Tu contraseña ha sido actualizada exitosamente.',
+          confirmButtonColor: '#0e6364',
         });
         this.hideModal('updatePasswordModal');
       },
@@ -222,6 +241,7 @@ export class LoginComponent {
           icon: 'error',
           title: 'Error al actualizar la contraseña',
           text: 'Hubo un problema. Intenta nuevamente.',
+          confirmButtonColor: '#0e6364',
         });
       }
     );

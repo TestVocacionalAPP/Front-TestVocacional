@@ -1,73 +1,99 @@
-<div class="container mt-4" *ngIf="experto">
+<div class="container mt-5" *ngIf="experto">
+
+  <!-- Botón Volver -->
   <button mat-button (click)="goBack()" class="mb-3">
     <mat-icon>arrow_back</mat-icon> Volver
   </button>
 
-  <mat-card>
-    <mat-card-header class="text-center">
-      <!-- Imagen del experto -->
-      <ng-container *ngIf="experto.imagenBase64; else sinImagen">
-        <img
-          [src]="formatImageUrl(experto.imagenBase64)"
-          alt="Imagen del experto"
-          class="rounded-circle border border-dark"
-          width="150"
-          height="150"
-        >
-      </ng-container>
-      <ng-template #sinImagen>
-        <div class="placeholder-image rounded-circle border border-dark d-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
-          <span>Sin imagen</span>
-        </div>
-      </ng-template>
-    </mat-card-header>
+  <!-- Tarjeta del experto -->
+  <div class="expert-card">
+
+    <!-- Imagen y nombre del experto -->
+    <div class="expert-container">
+      <div class="text-center">
+        <!-- Imagen del experto centrada -->
+        <ng-container *ngIf="experto.imagenBase64; else sinImagen">
+          <div class="expert-image-container">
+            <img
+              [src]="formatImageUrl(experto.imagenBase64)"
+              alt="Imagen del experto"
+              class="rounded-circle expert-image"
+            >
+          </div>
+        </ng-container>
+        <ng-template #sinImagen>
+          <div class="placeholder-image rounded-circle border border-dark d-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+            <span>Sin imagen</span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
 
     <!-- Contenido del perfil del experto -->
-    <mat-card-content>
-      <div class="text-center mt-3">
-        <mat-card-title>{{ experto.nombre }} {{ experto.apellido }}</mat-card-title>
-        <mat-card-subtitle>{{ experto.especialidad }}</mat-card-subtitle>
-      </div>
+    <div class="text-center">
+      <div>{{ experto.nombre }} {{ experto.apellido }}</div>
+      <div>{{ experto.especialidad }}</div>
       <div class="mt-3">
         <p><strong>Descripción:</strong></p>
         <p>{{ experto.descripcion }}</p>
       </div>
-    </mat-card-content>
-
-    <!-- Acciones -->
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="contactarExperto(experto)">Contactar</button>
-      <button mat-icon-button (click)="incrementarLikes()">
-        <mat-icon aria-label="Like" [ngClass]="{ 'liked': isLiked }">thumb_up</mat-icon>
-      </button>
-      <span>{{ experto.likes || 0 }} likes</span>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Sección de comentarios -->
-  <div class="mt-4">
-    <h4>Comentarios</h4>
-    <div class="mt-3 d-flex align-items-start">
-      <textarea [(ngModel)]="nuevoComentario" class="form-control me-2" placeholder="Escribe un comentario"></textarea>
-      <button class="btn btn-primary" (click)="agregarComentario()">Agregar comentario</button>
     </div>
 
-    <div *ngFor="let comentario of comentarios" class="mt-3 p-3 border rounded">
-      <strong>{{ comentario.nombreUsuario }} {{ comentario.apellidoUsuario }}</strong>
-      <p>{{ comentario.contenido }}</p>
-      <small class="text-muted">{{ comentario.fecha | date:'short' }}</small>
-
-      <!-- Botones de Editar y Eliminar -->
-      <div class="mt-2 d-flex justify-content-end">
-        <div *ngIf="comentario.esUsuarioAutenticado" class="mt-2">
-          <button class="btn btn-sm btn-warning me-2" (click)="editarComentario(comentario)">Editar</button>
-          <button class="btn btn-sm btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar</button>
-        </div>
+    <!-- Acciones del experto -->
+    <div class="d-flex justify-content-between align-items-center">
+      <button mat-raised-button class="button-color" (click)="contactarExperto(experto)">Contactar</button>
+      <div class="d-flex align-items-center">
+        <button mat-icon-button (click)="incrementarLikes()">
+          <mat-icon aria-label="Like" [ngClass]="{ 'liked': isLiked }">thumb_up</mat-icon>
+        </button>
+        <span>{{ experto.likes || 0 }} likes</span>
       </div>
     </div>
   </div>
+
+  <!-- Sección de comentarios -->
+  <!-- Sección de comentarios -->
+  <div class="comments-section mt-4">
+    <h4>Comentarios</h4>
+
+    <!-- Contenedor para el área de agregar comentario, fuera del scroll -->
+    <div class="d-flex align-items-start mt-3">
+      <textarea [(ngModel)]="nuevoComentario" class="form-control me-2" placeholder="Escribe un comentario" rows="2"></textarea>
+      <button class="btn btn-primary" (click)="agregarComentario()">Agregar comentario</button>
+    </div>
+
+    <!-- Contenedor de comentarios con scroll -->
+    <div class="comments-list">
+      <div *ngFor="let comentario of comentarios" class="comment-card mt-3 p-3 border rounded">
+        <strong>{{ comentario.nombreUsuario }} {{ comentario.apellidoUsuario }}</strong>
+
+        <!-- Mostrar un textarea si el comentario está en modo de edición -->
+        <div *ngIf="comentario.editando; else comentarioContenido">
+          <textarea [(ngModel)]="comentario.contenido" class="form-control" rows="2"></textarea>
+          <button class="btn btn-primary mt-2" (click)="guardarComentario(comentario)">Guardar</button>
+          <button class="btn btn-secondary mt-2" (click)="cancelarEdicion(comentario)">Cancelar</button>
+        </div>
+
+        <!-- Mostrar el contenido del comentario si no está en modo de edición -->
+        <ng-template #comentarioContenido>
+          <p>{{ comentario.contenido }}</p>
+          <small class="text-muted">{{ comentario.fecha | date:'short' }}</small>
+
+          <!-- Botones de Editar y Eliminar -->
+          <div *ngIf="comentario.esUsuarioAutenticado" class="mt-2 d-flex justify-content-end">
+            <button class="btn btn-sm btn-secondary me-2" (click)="editarComentario(comentario)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+
+
 </div>
 
+<!-- Mensaje si no se encuentra el experto -->
 <div *ngIf="!experto" class="alert alert-warning mt-4">
   No se encontraron detalles para este experto.
 </div>

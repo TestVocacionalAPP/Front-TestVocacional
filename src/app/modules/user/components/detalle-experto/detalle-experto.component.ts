@@ -9,6 +9,7 @@ import { SolicitudAsesoriaModalComponent } from '../../modales/solicitud-asesori
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 interface Comentario {
+  editando: boolean;
   id: number;
   contenido: string;
   fecha: string;
@@ -101,25 +102,40 @@ export class DetalleExpertoComponent implements OnInit {
   }
 
   editarComentario(comentario: Comentario): void {
-    const nuevoContenido = prompt('Editar comentario:', comentario.contenido);
-    if (nuevoContenido !== null && nuevoContenido.trim()) {
-      this.comentarioService
-        .editarComentario(comentario.id, nuevoContenido)
-        .subscribe(
-          () => {
-            this.obtenerComentarios(this.experto!.id);
-          },
-          (error) => {
-            console.error('Error al editar el comentario:', error);
-          }
-        );
+    comentario.editando = true; // Activar el modo de edición
+  }
+
+
+  guardarComentario(comentario: Comentario): void {
+    // Verifica si el comentario tiene contenido antes de enviarlo
+    if (comentario.contenido.trim()) {
+      this.comentarioService.editarComentario(comentario.id, comentario.contenido.trim()).subscribe(
+        () => {
+          // Desactivar el modo de edición
+          comentario.editando = false;
+          // Recargar los comentarios para reflejar el cambio
+          this.obtenerComentarios(this.experto!.id);
+        },
+        (error) => {
+          console.error('Error al editar el comentario:', error);
+        }
+      );
     }
   }
+
+  cancelarEdicion(comentario: Comentario): void {
+    comentario.editando = false; // Desactivar la edición
+    // Restaurar el contenido original del comentario
+    this.obtenerComentarios(this.experto!.id);
+  }
+
+
 
   eliminarComentario(comentarioId: number): void {
     if (confirm('¿Estás seguro de eliminar este comentario?')) {
       this.comentarioService.eliminarComentario(comentarioId).subscribe(
         () => {
+          // Recargar comentarios tras la eliminación
           this.obtenerComentarios(this.experto!.id);
         },
         (error) => {
@@ -128,6 +144,7 @@ export class DetalleExpertoComponent implements OnInit {
       );
     }
   }
+
 
   incrementarLikes(): void {
     if (this.experto) {
@@ -159,7 +176,8 @@ export class DetalleExpertoComponent implements OnInit {
           title: 'Solicitud Enviada',
           text: 'Tu solicitud de asesoría fue enviada con éxito.',
           icon: 'success',
-          confirmButtonText: 'Aceptar'
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#0e6364',
         });
       } else {
         console.log('Solicitud cancelada');

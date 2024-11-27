@@ -12,13 +12,16 @@ export class NavbardAdminComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+
+
+  // Método de cierre de sesión
   logout(): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Estás a punto de cerrar sesión.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#0e6364',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, cerrar sesión',
       cancelButtonText: 'Cancelar',
@@ -29,6 +32,8 @@ export class NavbardAdminComponent {
       }
     });
   }
+
+  // Verificar si el usuario está logueado
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }

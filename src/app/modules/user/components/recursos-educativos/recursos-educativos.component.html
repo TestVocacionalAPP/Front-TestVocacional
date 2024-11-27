@@ -1,4 +1,10 @@
-<div class="container mt-5">
+<!-- Indicador de carga centrado -->
+<div *ngIf="loading" class="text-center loading-spinner">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<!-- Sin contenedor limitante -->
+<div *ngIf="!loading">
   <h2 class="text-center mb-4">Recursos Educativos</h2>
 
   <!-- Barra de búsqueda -->
@@ -9,8 +15,8 @@
     </mat-form-field>
   </div>
 
-  <!-- Grid de recursos -->
-  <div class="card-grid">
+  <!-- Grid de recursos extendido a lo largo de la página -->
+  <div class="card-grid full-width">
     <mat-card class="mat-elevation-z2 card-container" *ngFor="let recurso of recursosFiltrados">
       <mat-card-header>
         <mat-card-title>{{ recurso.titulo }}</mat-card-title>
@@ -19,36 +25,35 @@
 
       <mat-card-content>
         <p class="descripcion-clamp">{{ recurso.descripcion }}</p>
-
-        <!-- Indicadores de categoría y precio -->
         <div class="d-flex justify-content-between align-items-center mt-3">
           <span *ngIf="recurso.categoriaRecurso === 'PREMIUM'" class="premium-badge">
-            <mat-chip selected>Premium</mat-chip>
+            <mat-chip [ngStyle]="{'background-color': '#f39c12'}" selected>
+              Premium
+            </mat-chip>
           </span>
           <span *ngIf="recurso.categoriaRecurso === 'GRATUITO'" class="free-badge">
-            <mat-chip color="primary" selected>Gratuito</mat-chip>
+            <mat-chip [ngStyle]="{'background-color': '#27ae60'}" selected>Gratuito</mat-chip>
           </span>
+          <mat-chip *ngIf="recurso.tieneAcceso && recurso.categoriaRecurso==='PREMIUM'">Comprado</mat-chip>
           <span *ngIf="recurso.categoriaRecurso === 'PREMIUM'">
             <strong>Precio:</strong> S/ {{ recurso.precio }}
           </span>
         </div>
-
-        <!-- Imagen en miniatura de video con restricción -->
         <img *ngIf="recurso.tipoRecurso === 'VIDEO' && getYoutubeThumbnail(recurso.urlRecurso)"
-          [src]="getYoutubeThumbnail(recurso.urlRecurso)" alt="Vista previa del video"
-          [class.disabled-thumbnail]="recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso"
-          (click)="(recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso) ? null : openVideoInNewTab(recurso.urlRecurso)"
-          class="video-thumbnail">
+             [src]="getYoutubeThumbnail(recurso.urlRecurso)" alt="Vista previa del video"
+             [class.disabled-thumbnail]="recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso"
+             (click)="(recurso.categoriaRecurso === 'PREMIUM' && !recurso.tieneAcceso) ? null : openVideoInNewTab(recurso.urlRecurso)"
+             class="video-thumbnail">
+
       </mat-card-content>
 
-      <!-- Botones centrados -->
       <mat-card-actions class="card-actions">
         <button *ngIf="recurso.tieneAcceso" mat-raised-button color="primary" class="btn-ver-recurso"
-          (click)="openVideoInNewTab(recurso.urlRecurso)">
+                (click)="openVideoInNewTab(recurso.urlRecurso)">
           Ver Recurso
         </button>
-        <button *ngIf="!recurso.tieneAcceso && recurso.categoriaRecurso === 'PREMIUM'" mat-raised-button color="accent"
-          (click)="comprarRecurso(recurso)">
+        <button *ngIf="!recurso.tieneAcceso && recurso.categoriaRecurso === 'PREMIUM'" mat-raised-button class="btn btn-comprar-recurso"
+                (click)="comprarRecurso(recurso)">
           Comprar Recurso
         </button>
       </mat-card-actions>

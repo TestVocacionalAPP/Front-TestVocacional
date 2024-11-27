@@ -1,24 +1,54 @@
 <mat-toolbar class="custom-toolbar">
-  <span class="app-name">Test vocacional</span>
+  <span class="app-name">Test Vocacional</span>
+
   <span class="example-spacer"></span>
 
-  <button *ngIf="isLoggedIn()" mat-button routerLink="/user" aria-label="Test Chaside">
-    Test chaside
+  <!-- Botón hamburguesa solo visible en móvil -->
+  <button class="hamburger-menu" (click)="toggleMenu()">
+    ☰
   </button>
 
-  <button *ngIf="isLoggedIn()" mat-button routerLink="/user/ver" aria-label="Ver Expertos">
-    Expertos
-  </button>
+  <!-- Navegación desktop -->
+  <div class="desktop-nav">
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user" aria-label="Test Chaside">
+      Test Chaside
+    </button>
 
-  <button *ngIf="isLoggedIn()" mat-button routerLink="/user/recursos-educativos" aria-label="Recursos educativos">
-    Recursos
-  </button>
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user/ver" aria-label="Ver Expertos">
+      Expertos
+    </button>
 
-  <!-- Botón de notificaciones -->
-  <button *ngIf="isLoggedIn()" mat-icon-button aria-label="Notificaciones" [matMenuTriggerFor]="notificacionesMenu">
-    <mat-icon>notifications</mat-icon>
-    <span *ngIf="tieneNotificaciones()" class="notification-badge">{{ notificaciones.length }}</span>
-  </button>
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user/recursos-educativos" aria-label="Recursos educativos">
+      Recursos
+    </button>
+
+    <!-- Botón de notificaciones -->
+    <button *ngIf="isLoggedIn()" mat-icon-button aria-label="Notificaciones" [matMenuTriggerFor]="notificacionesMenu">
+      <mat-icon>notifications</mat-icon>
+      <span *ngIf="tieneNotificaciones()" class="notification-badge">{{ notificaciones.length }}</span>
+    </button>
+  </div>
+
+  <!-- Navegación móvil -->
+  <div class="mobile-nav" [ngClass]="{'open': menuOpen}">
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user" aria-label="Test Chaside">
+      Test Chaside
+    </button>
+
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user/ver" aria-label="Ver Expertos">
+      Expertos
+    </button>
+
+    <button *ngIf="isLoggedIn()" mat-button routerLink="/user/recursos-educativos" aria-label="Recursos educativos">
+      Recursos
+    </button>
+
+    <!-- Botón de notificaciones -->
+    <button *ngIf="isLoggedIn()" mat-icon-button aria-label="Notificaciones" [matMenuTriggerFor]="notificacionesMenu">
+      <mat-icon>notifications</mat-icon>
+      <span *ngIf="tieneNotificaciones()" class="notification-badge">{{ notificaciones.length }}</span>
+    </button>
+  </div>
 
   <!-- Menú de notificaciones -->
   <mat-menu #notificacionesMenu="matMenu">
@@ -29,7 +59,7 @@
       </button>
     </ng-container>
     <ng-template #noNotificaciones>
-      <button mat-menu-item disabled>
+      <button mat-menu-item>
         <mat-icon>notifications_off</mat-icon>
         No hay notificaciones
       </button>
@@ -56,12 +86,9 @@
     </button>
   </mat-menu>
 
-  <!-- Botón de menú de usuario -->
   <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="isLoggedIn()" aria-label="Menú de usuario">
     <mat-icon>settings</mat-icon>
   </button>
 </mat-toolbar>
-
-<div class="toolbar-underline"></div>
 
 <router-outlet></router-outlet>

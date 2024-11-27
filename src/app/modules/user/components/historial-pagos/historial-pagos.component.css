@@ -1,0 +1,91 @@
+/* Estilos generales para el contenedor */
+.container {
+  max-width: 90%;
+  padding: 0 15px;
+}
+
+/* Título de la sección */
+h2 {
+  font-size: 2rem;
+  color: #0e6364; /* Color personalizado */
+  font-weight: bold;
+}
+
+/* Estilo para la tabla */
+.historial-compras-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0);
+}
+
+.historial-compras-table th, .historial-compras-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.historial-compras-table th {
+  background-color: #0e6364;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.historial-compras-table td {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Efecto al pasar el mouse sobre las filas */
+.historial-compras-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Alternancia de colores en filas para mejorar la lectura */
+.historial-compras-table tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+.historial-compras-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Resaltar los números de las columnas */
+.historial-compras-table td:first-child {
+  font-weight: bold;
+  color: #0e6364;
+}
+
+/* Estilos para el formato de moneda */
+.historial-compras-table td:nth-child(3) {
+  color: #0e6364;
+  font-weight: bold;
+}
+
+/* Estilo para las fechas */
+.historial-compras-table td:nth-child(4) {
+  color: #555;
+}
+
+/* Espaciado y margen */
+.historial-compras-table thead th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .historial-compras-table th, .historial-compras-table td {
+    padding: 8px 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+/* Centro del loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Altura para que se vea centrado */
+}

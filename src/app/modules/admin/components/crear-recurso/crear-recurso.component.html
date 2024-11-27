@@ -1,7 +1,6 @@
-<!-- crear-recurso.component.html -->
 <div class="container mt-5">
-  <div class="card p-4 shadow">
-    <h2 class="text-center mb-4">Crear Recurso Educativo</h2>
+  <div class="card p-4 shadow-lg rounded">
+    <h2 class="text-center mb-4 titulo-recurso">Crear Recurso Educativo</h2>
     <form (ngSubmit)="guardarRecurso()">
       <!-- Campos existentes -->
       <div class="mb-3">
@@ -23,7 +22,6 @@
           <mat-label>Tipo de Recurso</mat-label>
           <mat-select [(ngModel)]="recursoData.tipoRecurso" name="tipoRecurso" required>
             <mat-option value="VIDEO">Video</mat-option>
-
           </mat-select>
         </mat-form-field>
       </div>
@@ -54,7 +52,7 @@
         </mat-form-field>
       </div>
 
-      <div class="text-center">
+      <div class="text-center mt-4">
         <button mat-raised-button color="primary" type="submit">Crear Recurso</button>
       </div>
     </form>

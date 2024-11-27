@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Lista de Recursos Educativos</h2>
+
   <div class="d-flex justify-content-between align-items-center mb-3">
     <!-- Barra de búsqueda -->
     <mat-form-field appearance="outline" class="search-bar">
@@ -7,7 +8,8 @@
       <input matInput [(ngModel)]="searchText" (ngModelChange)="filtrarRecursos()" placeholder="Escribe para buscar">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="openCrearRecursoDialog()">Crear Recurso Educativo</button>
+    <!-- Botón Crear Recurso con colores actualizados -->
+    <button mat-raised-button class="crear-recurso-btn" (click)="openCrearRecursoDialog()">Crear Recurso Educativo</button>
   </div>
 
   <div class="row mt-4">
@@ -34,10 +36,10 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-icon-button color="accent" (click)="openEditarRecursoDialog(recurso)">
-            <mat-icon>edit</mat-icon>
+            <mat-icon [ngStyle]="{'color':'#0e6364'}">edit</mat-icon>
           </button>
           <button mat-icon-button color="warn" (click)="eliminarRecurso(recurso.id)">
-            <mat-icon>delete</mat-icon>
+            <mat-icon [ngStyle]="{'color':'#0e6364'}">delete</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>

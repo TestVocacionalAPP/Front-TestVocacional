@@ -1,16 +1,18 @@
-/* Contenedor general de las tarjetas */
+/* Estilo de la caja contenedora */
 .card-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  background-color: #f9f9f9;
+  height: auto;
+  background: #ffffff; /* Fondo sólido */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 1px solid rgba(185, 210, 220, 0.3); /* Borde suave */
 }
 
+/* Efecto hover para las tarjetas */
 .card-container:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -24,6 +26,29 @@
   padding: 20px;
 }
 
+/* Grid de tarjetas a lo largo de la pantalla */
+.card-grid.full-width {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  margin-left: 0;
+}
+
+/* En pantallas más grandes, desplazamos hacia la derecha */
+@media (min-width: 768px) {
+  .card-grid.full-width {
+    margin-left: 20px; /* Desplazamiento hacia la derecha solo en pantallas medianas y grandes */
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-grid.full-width {
+    margin-left: 150px; /* Desplazamiento mayor para pantallas grandes */
+  }
+}
+
 /* Estilos para la imagen de miniatura */
 .video-thumbnail {
   width: 100%;
@@ -32,9 +57,9 @@
   object-fit: cover;
   cursor: pointer;
   margin-top: 8px;
+  transition: opacity 0.3s ease;
 }
 
-/* Desactivar la miniatura si es Premium y el usuario no tiene acceso */
 .disabled-thumbnail {
   filter: grayscale(100%);
   cursor: not-allowed;
@@ -49,6 +74,7 @@
   text-overflow: ellipsis;
   margin-bottom: 1em;
   color: #4a4a4a;
+  font-size: 0.95rem;
 }
 
 /* Centrando los botones y mejorando su estilo */
@@ -64,6 +90,38 @@
   font-size: 0.95rem;
   border-radius: 8px;
   text-transform: uppercase;
+  background-color: #0e6364;
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.centered-chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-ver-recurso:hover {
+  background-color: #0e6364;
+  transform: translateY(-3px);
+}
+
+.btn-comprar-recurso {
+  padding: 20px 35px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #333737;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-comprar-recurso:hover {
+  background-color: #021010;
+  transform: translateY(-3px);
 }
 
 button[mat-raised-button] {
@@ -72,13 +130,52 @@ button[mat-raised-button] {
   font-size: 0.9rem;
 }
 
-
-
-
-
 /* Barra de búsqueda */
 .search-bar {
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
+}
+
+/* Chips para la categoría de los recursos */
+.mat-chip.selected {
+  font-size: 0.85rem;
+}
+
+.premium-badge .mat-chip {
+  color: #ffffff;
+}
+
+.free-badge .mat-chip {
+  color: #ffffff;
+}
+
+/* Efecto de sombra en los botones */
+button[mat-raised-button]:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mejorar los márgenes y la organización general */
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Mejoras visuales para el título */
+h2 {
+  font-size: 2rem;
+  color: #0e6364;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Centro del loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }

@@ -4,6 +4,7 @@ import { TestService } from 'src/app/services/test.service';
 import { RespuestaDTO } from 'src/app/models/RespuestaDTO';
 import { RespuestasService } from 'src/app/services/Respuesta.service';
 import { Router } from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-test-chaside',
@@ -32,6 +33,7 @@ export class TestChasideComponent implements OnInit {
     this.testService.obtenerPreguntasPorTest(this.idTest).subscribe(
       (data) => {
         this.preguntas = data.preguntas;
+        this.isLoading = false;
       },
       (error) => {
         console.error('No se pudieron cargar las preguntas.', error);
@@ -95,7 +97,11 @@ export class TestChasideComponent implements OnInit {
 
   enviarRespuestas(): void {
     if (this.respuestas.length < this.preguntas.length) {
-      alert('Por favor, responde todas las preguntas antes de enviar.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Debes responder todas las preguntas para enviar tus respuestas'
+      })
       return;
     }
 

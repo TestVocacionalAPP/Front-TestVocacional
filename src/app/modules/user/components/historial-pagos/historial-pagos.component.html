@@ -1,6 +1,12 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Historial de Compras</h2>
-  <table class="table table-striped">
+
+  <!-- Indicador de carga centrado -->
+  <div *ngIf="loading" class="text-center loading-spinner">
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+  </div>
+
+  <table class="table table-striped" *ngIf="!loading">
     <thead>
       <tr>
         <th>N°</th>

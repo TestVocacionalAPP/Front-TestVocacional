@@ -77,7 +77,7 @@ export class PerfilComponent implements OnInit {
       text: 'Esta acción eliminará tu cuenta permanentemente.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#d33',
+        confirmButtonColor: '#0e6364',
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar'

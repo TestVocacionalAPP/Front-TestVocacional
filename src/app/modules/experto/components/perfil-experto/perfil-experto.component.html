@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class="profile-container mt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8" style="color: rgb(3, 54, 61);">
-      <button mat-stroked-button color="primary" (click)="regresar()">Regresar</button>
+      <button mat-stroked-button (click)="regresar()">Regresar</button>
       <h2 class="text-center mb-4" style="color: rgb(3, 54, 61);">Perfil del Experto</h2>
 
       <!-- Imagen del perfil -->
@@ -25,7 +25,7 @@
       <!-- Botón para cargar imagen -->
       <div class="text-center mb-3" *ngIf="editMode">
         <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
-        <button mat-raised-button color="primary" (click)="fileInput.click()">Subir Imagen</button>
+        <button mat-raised-button (click)="fileInput.click()">Subir Imagen</button>
       </div>
 
       <!-- Formulario de perfil del experto -->
@@ -82,8 +82,8 @@
 
       <!-- Botones de edición y guardado -->
       <div class="text-center mt-4">
-        <button *ngIf="!editMode" mat-raised-button color="primary" (click)="toggleEditMode()">Editar perfil</button>
-        <button *ngIf="editMode" mat-raised-button color="primary" (click)="guardarCambios()">Guardar cambios</button>
+        <button *ngIf="!editMode" mat-raised-button (click)="toggleEditMode()">Editar perfil</button>
+        <button *ngIf="editMode" mat-raised-button (click)="guardarCambios()">Guardar cambios</button>
 
       </div>
     </div>

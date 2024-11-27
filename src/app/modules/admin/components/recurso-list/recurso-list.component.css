@@ -1,24 +1,44 @@
+/* Estilo general del contenedor */
+.container {
+  max-width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Tarjetas de recursos */
 .card-container {
-  width: 100%; /* O ajusta a max-width: 350px si deseas limitar el ancho */
-  min-height: 400px; /* Define una altura mínima establecida para la tarjeta */
-  max-height: 450px; /* Define una altura máxima para mantener el tamaño uniforme */
+  width: 100%;
+  height: 450px; /* Ajuste dinámico */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: auto;
+  padding: 16px;
+  border-radius: 12px;
+  background: #ffffff; /* Fondo sólido */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de miniatura de video */
 .video-thumbnail {
   width: 100%;
   height: auto;
-  max-height: 180px; /* Altura máxima de la miniatura para mantener la proporción */
+  max-height: 180px;
   border-radius: 8px;
   cursor: pointer;
   object-fit: cover;
+  margin-bottom: 1em;
 }
 
+/* Descripción recortada para el texto */
 .descripcion-clamp {
-  max-height: 7.5em; /* Ajusta para mostrar hasta 5 líneas */
+  max-height: 7.5em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -26,4 +46,71 @@
   -webkit-box-orient: vertical;
   margin-bottom: 1em;
   word-break: break-word;
+}
+
+/* Estilo para etiquetas de categorías */
+.premium-badge, .gratis-badge {
+  font-weight: 600;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.premium-badge {
+  background-color: #d3d3d3; /* Naranja para Premium */
+}
+
+.gratis-badge {
+  background-color: #0e6364; /* Verde para Gratuito */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  max-width: 300px;
+  flex: 1;
+}
+
+/* Estilo de los botones de acción */
+mat-card-actions button {
+  margin-left: 8px;
+}
+
+/* Botón Crear Recurso con color personalizado */
+.crear-recurso-btn {
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 25px;
+  background-color: #0e6364;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.crear-recurso-btn:hover {
+  background-color: #0e6364;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* Estilo del icono de eliminar y editar */
+mat-icon {
+  font-size: 24px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card-container {
+    height: auto; /* Ajuste para que las tarjetas en móviles no se estiren */
+  }
+
+  .search-bar {
+    max-width: 200px;
+  }
 }

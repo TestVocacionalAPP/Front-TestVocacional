@@ -1,3 +1,4 @@
+/* Estilo de la caja principal */
 .container {
   padding: 2rem;
   display: flex;
@@ -7,47 +8,48 @@
 
 .result-card {
   margin-bottom: 1.5rem;
-  border: 1px solid rgb(185, 210, 220);
-  border-radius: 10px;
+  border: 1px solid rgba(185, 210, 220, 0.3); /* Border semitransparente */
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 51, 51, 0.1);
   max-width: 800px;
   width: 100%;
-  background-color: #ffffff; /* Fondo de la tarjeta */
+  background: #ffffff; /* Fondo sólido */
+  /* Se elimina el efecto de desenfoque */
 }
 
 mat-card-header {
-  background-color: rgb(3, 54, 61); /* Tono oscuro */
+  background: #0e6364; /* Fondo sólido con color oscuro */
   padding: 1rem;
   text-align: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  display: block; /* Asegura que se muestre como bloque */
+  display: block;
 }
 
 mat-card-header h2 {
-  font-size: 1.5rem; /* Tamaño de fuente mejorado */
-  color: #ffffff; /* Texto blanco */
+  font-size: 1.5rem;
+  color: #ffffff;
   margin: 0;
-  font-weight: 600; /* Mayor énfasis en el título */
+  font-weight: 600;
 }
 
 mat-card-content {
-  padding: 1.5rem; /* Espacio adicional para mejorar la legibilidad */
-  color: rgb(33, 64, 75); /* Tono más oscuro para contraste */
+  padding: 1.5rem;
+  color: rgb(33, 64, 75);
   text-align: justify;
-  line-height: 1.6; /* Mejor separación entre líneas */
+  line-height: 1.6;
 }
 
 mat-card-content h3 {
   font-size: 1.5rem;
-  color: rgb(3, 54, 61); /* Tono más oscuro */
+  color: #0e6364;
   margin-top: 1rem;
-  font-weight: 500; /* Negrita moderada para subtítulos */
+  font-weight: 500;
 }
 
 mat-card-content p {
-  font-size: 1.1rem; /* Tamaño de fuente ligeramente mayor */
-  margin-bottom: 1.2rem; /* Espacio adicional al final de los párrafos */
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
 }
 
 @media (max-width: 600px) {
@@ -61,10 +63,43 @@ mat-card-content p {
   }
 
   mat-card-content h3 {
-    font-size: 1.3rem; /* Mayor legibilidad en dispositivos móviles */
+    font-size: 1.3rem;
   }
 
   mat-card-content p {
-    font-size: 1rem; /* Ajuste proporcional para párrafos */
+    font-size: 1rem;
   }
+}
+
+/* Centro del loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Estilo para las tarjetas de carrera */
+.carrera-card {
+  background: #ffffff; /* Fondo sólido */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes suaves */
+}
+
+.carrera-card mat-card-header {
+  background: #0e6364; /* Fondo con tono oscuro */
+  color: #ffffff;
+}
+
+.carrera-card mat-card-title {
+  font-size: 1.2rem;
+}
+
+.carrera-card mat-card-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.carrera-card mat-card-content {
+  color: rgb(23, 23, 23);
 }

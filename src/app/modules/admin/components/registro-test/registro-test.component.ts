@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class RegistroTestComponent implements OnInit {
   testForm: FormGroup;
   idTest!: number;
+  isLoading: boolean = false;  // Variable para controlar el estado de carga
 
   constructor(
     private fb: FormBuilder,
@@ -27,9 +28,7 @@ export class RegistroTestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-
-    });
+    this.route.params.subscribe((params) => {});
   }
 
   get preguntas(): FormArray {
@@ -49,6 +48,8 @@ export class RegistroTestComponent implements OnInit {
   }
 
   guardarTest(): void {
+    this.isLoading = true; // Activar la carga
+
     const titulo = this.testForm.value.nombreTest;
     const fileInput = document.getElementById('excelUpload') as HTMLInputElement;
     const file = fileInput.files ? fileInput.files[0] : null;
@@ -81,6 +82,9 @@ export class RegistroTestComponent implements OnInit {
             icon: 'error',
             confirmButtonText: 'Aceptar',
           });
+        },
+        () => {
+          this.isLoading = false; // Desactivar la carga después de la respuesta
         }
       );
     } else {
@@ -91,9 +95,9 @@ export class RegistroTestComponent implements OnInit {
         icon: 'warning',
         confirmButtonText: 'Aceptar',
       });
+      this.isLoading = false; // Desactivar la carga si hay un error
     }
   }
-
 
   cargarExcel(event: any): void {
     const file = event.target.files[0];
@@ -108,7 +112,7 @@ export class RegistroTestComponent implements OnInit {
           }
         );
       } else {
-        console.error('No se pudo cargar el archivo: ID de Test no encontrado');
+        console.log('Se ha subido el excel');
       }
     }
   }

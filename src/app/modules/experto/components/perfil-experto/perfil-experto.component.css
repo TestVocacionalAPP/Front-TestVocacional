@@ -1,0 +1,123 @@
+/* Contenedor principal sin glassmorfismo */
+.profile-container {
+  background: #ffffff; /* Fondo sólido */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ecf0f1; /* Borde sólido */
+  max-width: 700px; /* Limita el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Título del perfil */
+h2.profile-title {
+  color: rgb(3, 54, 61);
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center; /* Centra el título */
+}
+
+/* Imagen del perfil */
+img.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgb(3, 54, 61); /* Borde sólido */
+  object-fit: cover;
+}
+
+img.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* Botón regresar */
+button.back-button {
+  margin-bottom: 20px;
+  color: rgb(3, 54, 61);
+  border-color: rgb(3, 54, 61);
+  font-size: 1rem;
+}
+
+button.back-button:hover {
+  background-color: rgb(3, 54, 61);
+  color: #0e6364;
+}
+
+/* Botón subir imagen */
+button.upload-button {
+  background-color: #2c3e50;
+  color: #0e6364;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 8px 15px;
+}
+
+button.upload-button:hover {
+  background-color: #34495e;
+}
+
+/* Botones de edición y guardado */
+button.edit-button,
+button.save-button {
+  background-color: #2c3e50;
+  color: #0e6364;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.edit-button:hover,
+button.save-button:hover {
+  background-color: #34495e;
+  transform: scale(1.05);
+}
+
+/* Campos de formulario */
+mat-form-field {
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+mat-form-field.mat-form-field-appearance-outline {
+  padding: 0 12px;
+}
+
+/* Para campos deshabilitados */
+mat-form-field.mat-form-field-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Diseño de texto en el formulario */
+mat-label {
+  font-weight: bold;
+  color: rgb(3, 54, 61);
+}
+
+textarea[matInput] {
+  resize: none;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 15px;
+    width: 100%; /* Asegura que ocupe el 100% en pantallas pequeñas */
+  }
+
+  button.back-button {
+    font-size: 0.9rem;
+  }
+
+  button.upload-button,
+  button.edit-button,
+  button.save-button {
+    font-size: 0.85rem;
+  }
+
+  img.profile-image {
+    width: 100px;
+    height: 100px;
+  }
+}

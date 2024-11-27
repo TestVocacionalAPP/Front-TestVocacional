@@ -3,6 +3,9 @@
   font-weight: bold;
   text-align: center;
   justify-content: center;
+  background-color: #0e6364;
+  color: white;
+
 }
 
 .mat-table {
@@ -12,6 +15,10 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+}
+
+.table-asesorias{
+  margin: 20px;
 }
 
 th.mat-header-cell {
