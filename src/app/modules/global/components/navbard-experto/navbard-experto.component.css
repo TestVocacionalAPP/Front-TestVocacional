@@ -55,16 +55,7 @@
   border: 2px solid #fff;
 }
 
-button.mat-icon-button {
-  color: #2c3e50;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
 
-  &:hover {
-    background-color: rgba(44, 62, 80, 0.1);
-  }
-}
 
 .hamburger-menu {
   display: none;
