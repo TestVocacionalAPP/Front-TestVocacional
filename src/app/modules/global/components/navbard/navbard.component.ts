@@ -21,6 +21,7 @@ export class NavbardComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerNotificaciones(); // Llamada para cargar las notificaciones al iniciar
+    this.authService.isLoggedIn();
   }
 
 

@@ -6,6 +6,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  width: 100%;
 }
 
 .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {

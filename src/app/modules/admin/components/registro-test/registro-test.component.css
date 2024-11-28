@@ -1,19 +1,68 @@
 /* Contenedor principal */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #64b5b6 0%, #0e6364 100%);
+  margin: 0; /* Eliminar márgenes globales */
+  box-sizing: border-box;
+}
+
+/* Asegurar que el formulario ocupe el ancho completo y esté alineado debajo de las pestañas */
+.content-main {
+  display: flex;
+  flex-direction: column; /* Colocar los elementos en una columna */
+  justify-content: flex-start; /* Alineación al inicio */
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* Contenedor del formulario */
 .form-container {
   max-width: 700px;
+  width: 100%;
   padding: 30px;
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid rgba(50, 45, 45, 0.25);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
+/* Estilo para cuando el formulario tiene hover */
 .form-container:hover {
   background: #ffffff;
-  box-shadow:
-    0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
   transform: translateY(-5px);
 }
+
+
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .content-main {
+    flex-direction: column; /* Apilar los elementos */
+    padding-top: 10px; /* Ajustar el espaciado superior */
+  }
+
+  .form-container {
+    width: 100%; /* El formulario ocupa todo el ancho en móviles */
+    max-width: 100%;
+    margin-top: 20px; /* Asegura algo de espacio encima */
+  }
+
+  /* Asegurar que el formulario no se mueva a la derecha */
+  .spinner-container {
+    width: 100%; /* El spinner ocupa todo el ancho */
+  }
+
+  button.guardar-button {
+    width: 80%; /* Aseguramos que el botón tenga un buen tamaño en pantallas pequeñas */
+  }
+}
+
 
 /* Estilos para el título */
 .text-center {
@@ -25,7 +74,7 @@
   margin-bottom: 2rem;
 }
 
-/* Estilos para los campos de formulario */
+/* Personalización de los campos del formulario */
 .mat-form-field {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -37,7 +86,7 @@
   padding: 5px;
 }
 
-/* Personalización de inputs */
+/* Estilos para los inputs */
 input.mat-input-element {
   background: #ffffff;
   border: none;
@@ -62,7 +111,7 @@ input[type="file"]:hover {
   box-shadow: 0 4px 15px rgba(14, 99, 100);
 }
 
-/* Estilos para labels */
+/* Estilos para el label */
 .form-label {
   color: #04545b;
   font-weight: 500;
@@ -72,7 +121,7 @@ input[type="file"]:hover {
   text-shadow: 0 1px 2px rgba(0, 0, 0);
 }
 
-/* Botón */
+/* Botón de guardar */
 button.guardar-button {
   background: rgba(14, 99, 100, 0.8);
   padding: 12px 35px;
@@ -96,6 +145,7 @@ button.guardar-button:active {
   transform: translateY(0);
 }
 
+/* Estilo del spinner */
 .spinner-container {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -103,9 +153,3 @@ button.guardar-button:active {
   margin: 20px 0;
 }
 
-/* Asegúrate de tener un background adecuado en el body */
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #64b5b6 0%, #0e6364 100%);
-  padding: 20px;
-}
