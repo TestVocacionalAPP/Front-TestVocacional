@@ -41,18 +41,17 @@ export class RecursosEducativosComponent implements OnInit {
     });
   }
 
-  buscarRecursos(): void {
-    if (this.searchText) {
-      this.recursoService.buscarRecursosPorTitulo(this.searchText).subscribe({
-        next: (recursos) => {
-          this.recursosFiltrados = recursos;
-        },
-        error: (error) => console.error('Error al buscar recursos:', error),
-      });
-    } else {
-      // Si la búsqueda está vacía, listar todos los recursos
-      this.listarRecursos();
-    }
+  buscarRecursos() {
+    const normalizedSearchText = this.searchText.toLowerCase(); // Convertimos el texto a minúsculas
+    this.recursosFiltrados = this.recursos.filter(recurso =>
+      recurso.titulo.toLowerCase().includes(normalizedSearchText) ||
+      recurso.descripcion.toLowerCase().includes(normalizedSearchText)
+    );
+  }
+   // Limpiar la barra de búsqueda
+   clearSearch() {
+    this.searchText = '';
+    this.buscarRecursos();
   }
 
   actualizarEstadoRecursos(): void {

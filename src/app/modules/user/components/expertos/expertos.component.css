@@ -27,20 +27,16 @@ h2 {
 /* Contenedor de la búsqueda */
 .mat-form-field {
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 /* Estilo de las tarjetas de los expertos */
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-}
-
 .expert-card {
   width: 100%;
   max-width: 320px; /* Tamaño máximo de las tarjetas */
   margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos dentro de la tarjeta estén en columna */
 }
 
 /* Estilo de las tarjetas sin Glassmorphism */
@@ -52,16 +48,35 @@ h2 {
   color: #0e6364;  /* Texto con el color primario */
   border: 1px solid #ecf0f1;  /* Borde suave */
   transition: transform 0.3s ease-in-out;  /* Efecto al pasar el cursor */
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Altura fija de la tarjeta */
+  justify-content: space-between; /* Asegura que los elementos se distribuyan bien */
+  min-height: 400px; /* Asegura que la tarjeta nunca sea más pequeña que esto */
+  max-height: 500px; /* Evita que la tarjeta se haga demasiado grande si la descripción es muy larga */
 }
 
-/* Grid de tarjetas para expertos */
+/* Limitar la descripción y mostrar '...' si hay más texto */
+mat-card-content {
+  flex-grow: 1; /* Hace que la sección de contenido crezca para llenar el espacio restante */
+  overflow: hidden; /* Previene que el contenido desborde la tarjeta */
+  text-overflow: ellipsis; /* Muestra '...' si el contenido es demasiado largo */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita la cantidad de líneas visibles para la descripción */
+  -webkit-box-orient: vertical;
+}
+
+/* Grid de tarjetas para expertos (adaptación responsiva) */
 .expert-card-grid.full-width {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Diseño flexible */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Diseño flexible */
   gap: 16px;
   padding: 20px; /* Espaciado interno */
   width: 100%; /* Ancho completo */
   margin: 0; /* Sin márgenes laterales */
+  grid-auto-rows: 1fr; /* Para que las tarjetas tengan el mismo alto */
+  grid-template-rows: auto; /* Para mantener las tarjetas con alturas automáticas */
+  grid-gap: 16px; /* Espacio entre las tarjetas */
 }
 
 /* En pantallas más grandes, desplazamos hacia la derecha */
@@ -102,22 +117,6 @@ mat-card-subtitle {
 }
 
 /* Estilo del contenido dentro de la tarjeta */
-mat-card-header {
-  background-color: #ecf0f1;
-  padding: 0.5rem;
-}
-
-mat-card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0e6364;
-}
-
-mat-card-subtitle {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-}
-
 mat-card-content p {
   font-size: 1rem;
   color: #0e6364;
@@ -130,6 +129,7 @@ mat-card-actions {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  gap: 2px; /* Esto agrega un espacio de 10px entre los botones */
 }
 
 button.mat-raised-button {
@@ -177,4 +177,33 @@ button.mat-raised-button:active {
   justify-content: center;
   align-items: center;
   height: 200px; /* Altura para que se vea centrado */
+}
+
+/* Estilo de los botones de acción */
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 2px; /* Esto agrega un espacio de 10px entre los botones */
+}
+
+/* Estilo del botón "Ver detalles" */
+button.ver-detalles {
+  background-color: transparent;
+  color: #0e6364;
+  border: 1px solid #0e6364;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button.ver-detalles:hover {
+  background-color: #0e6364;
+  color: white;
+  transform: translateY(-3px);
+}
+
+button.ver-detalles:active {
+  transform: translateY(1px);
 }

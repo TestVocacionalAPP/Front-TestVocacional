@@ -1,3 +1,13 @@
+/* Estilo para el contenedor de la grid */
+.card-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Mínimo 280px por tarjeta, adaptándose al tamaño de la pantalla */
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 /* Estilo de la caja contenedora */
 .card-container {
   display: flex;
@@ -16,37 +26,6 @@
 .card-container:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Grid de tarjetas */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Grid de tarjetas a lo largo de la pantalla */
-.card-grid.full-width {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-  margin-left: 0;
-}
-
-/* En pantallas más grandes, desplazamos hacia la derecha */
-@media (min-width: 768px) {
-  .card-grid.full-width {
-    margin-left: 20px; /* Desplazamiento hacia la derecha solo en pantallas medianas y grandes */
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-grid.full-width {
-    margin-left: 150px; /* Desplazamiento mayor para pantallas grandes */
-  }
 }
 
 /* Estilos para la imagen de miniatura */
@@ -95,15 +74,6 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.centered-chip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .btn-ver-recurso:hover {
   background-color: #0e6364;
   transform: translateY(-3px);
@@ -122,37 +92,6 @@
 .btn-comprar-recurso:hover {
   background-color: #021010;
   transform: translateY(-3px);
-}
-
-button[mat-raised-button] {
-  flex: 1;
-  max-width: 150px;
-  font-size: 0.9rem;
-}
-
-/* Barra de búsqueda */
-.search-bar {
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
-}
-
-/* Chips para la categoría de los recursos */
-.mat-chip.selected {
-  font-size: 0.85rem;
-}
-
-.premium-badge .mat-chip {
-  color: #ffffff;
-}
-
-.free-badge .mat-chip {
-  color: #ffffff;
-}
-
-/* Efecto de sombra en los botones */
-button[mat-raised-button]:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Mejorar los márgenes y la organización general */
@@ -178,4 +117,61 @@ h2 {
   justify-content: center;
   align-items: center;
   height: 200px;
+}
+/* Contenedor de la barra de búsqueda */
+.search-bar-container {
+  width: 100%;
+  max-width: 600px; /* Limita el tamaño máximo de la barra */
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Estilo de la barra de búsqueda */
+.search-bar {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 30px; /* Bordes redondeados para un diseño más moderno */
+  background-color: #f7f7f7;
+}
+
+/* Mejorar el campo de entrada */
+.search-input {
+  padding-left: 40px; /* Espacio para el icono */
+  border-radius: 30px; /* Bordes redondeados en el input */
+}
+
+/* Estilo para el icono de búsqueda dentro del input */
+mat-icon[matPrefix] {
+  color: #0e6364;
+  font-size: 20px;
+}
+
+/* Estilo para el icono de limpiar al final */
+mat-icon[matSuffix] {
+  color: #0e6364;
+  cursor: pointer;
+}
+
+/* Efecto al hacer foco en el campo */
+.search-bar .mat-form-field-underline {
+  background-color: #0e6364;
+}
+
+.search-bar .mat-form-field-label {
+  color: #0e6364;
+}
+
+/* Foco sobre el campo de texto */
+.search-bar .mat-form-field-ripple {
+  background-color: #0e6364;
+}
+
+/* Añadir transiciones para un enfoque más suave */
+.search-bar .mat-form-field-underline,
+.search-bar .mat-form-field-label {
+  transition: all 0.3s ease;
+}
+
+.search-bar .mat-form-field-ripple {
+  transition: background-color 0.3s ease;
 }
