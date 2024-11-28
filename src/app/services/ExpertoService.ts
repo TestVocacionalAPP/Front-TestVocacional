@@ -5,6 +5,7 @@ import baserUrl from '../config/helper';
 import { Experto } from '../models/Experto';
 import { AsesoriaResponseDTO } from './AsesoriaService';
 import { ExpertoCreateDTO } from '../models/ExpertoCreateDTO';
+import { ExpertoUpdateDTO } from '../models/ExpertoUpdateDTO';
 export interface ExpertoPerfilDTO {
   nombre: string;
   apellido: string;
@@ -73,4 +74,14 @@ export class ExpertoService {
     const body = { imagenBase64 };
     return this.http.put<string>(`${this.apiUrl}/perfil/imagen`, body);
   }
+
+  eliminarExperto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/eliminarExperto/${id}`);
+  }
+  actualizarExperto(id: number, expertoData: ExpertoUpdateDTO): Observable<Experto> {
+    return this.http.put<Experto>(`${this.apiUrl}/actualizar/${id}`, expertoData);
+  }
+
+
+
 }

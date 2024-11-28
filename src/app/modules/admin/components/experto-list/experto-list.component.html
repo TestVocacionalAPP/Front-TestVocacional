@@ -9,24 +9,34 @@
   <!-- Tabla para mostrar la lista de expertos -->
   <table class="table table-striped table-hover">
     <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Teléfono</th>
-      <th>Correo</th>
-      <th>Especialidad</th>
-      <th>Tarifa</th>
-    </tr>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Especialidad</th>
+        <th>Tarifa</th>
+        <th>Acciones</th> <!-- Columna para las acciones (editar y eliminar) -->
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let experto of expertos">
-      <td>{{ experto.nombre }}</td>
-      <td>{{ experto.apellido }}</td>
-      <td>{{ experto.telefono }}</td>
-      <td>{{ experto.correo }}</td>
-      <td>{{ experto.especialidad }}</td>
-      <td>{{ experto.tarifa | currency }}</td>
-    </tr>
+      <tr *ngFor="let experto of expertos">
+        <td>{{ experto.nombre }}</td>
+        <td>{{ experto.apellido }}</td>
+        <td>{{ experto.telefono }}</td>
+        <td>{{ experto.correo }}</td>
+        <td>{{ experto.especialidad }}</td>
+        <td>{{ experto.tarifa | currency }}</td>
+        <td>
+          <!-- Botones para editar y eliminar -->
+          <button mat-icon-button color="primary" (click)="editarExperto(experto)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarExperto(experto)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
