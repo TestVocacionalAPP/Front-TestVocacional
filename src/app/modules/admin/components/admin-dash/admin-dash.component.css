@@ -1,95 +1,112 @@
-/* Estilo para la barra lateral */
 .sidebar {
   background-color: #0b4747; /* Azul oscuro */
-  display: block;
-  position: sticky; /* Se mantiene fija en la pantalla */
+  position: relative; /* Volvemos a relative */
   top: 0;
+  height: 100%; /* 100% de altura */
+  width: 250px; /* Ancho fijo */
   background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1879 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="%230e6364" d="M 0 0 L 950 110 L 950 0 L 0 0 Z" stroke-width="0"></path> <path fill="%230e6364" d="M 949 110 L 1869 7 L 1869 0 L 949 0 Z" stroke-width="0"></path> </svg>');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
-  height: 100vh; /* Asegura que la barra lateral ocupe toda la altura */
-  width: 250px; /* Ajusta el ancho de la barra lateral */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para un efecto flotante */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   padding-top: 20px;
-  z-index: 1000;
+  z-index: 10;
+  overflow-y: auto; /* Scroll si el contenido es largo */
+}
+
+/* Contenido principal */
+.content-main {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  justify-content: normal; /* Alinea los elementos al final (abajo) */
+  align-items: center; /* Centrado horizontal de los elementos */
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  padding: 20px; /* Agrega algo de espaciado */
+}
+
+.container-fluid {
+  display: flex; /* Usar flexbox para el layout */
+  min-height: 100vh; /* Asegurar altura completa */
+}
+
+.row {
+  display: flex;
+  width: 100%;
 }
 
 /* Títulos de la barra lateral */
 .sidebar h3 {
   color: #ecf0f1; /* Blanco suave */
-  font-size: 1.5rem;
-  margin-bottom: 20px;
   font-weight: bold;
 }
 
 /* Estilo de los enlaces de la barra lateral */
 .sidebar .mat-nav-list a {
   color: #ecf0f1; /* Blanco suave */
-  font-weight: 500;
-  display: block;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 8px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
-/* Estilo al pasar el mouse sobre los enlaces */
-.sidebar .mat-nav-list a:hover {
-  background-color: #0e6364; /* Azul un poco más claro */
-  padding-left: 25px; /* Añade un desplazamiento hacia la izquierda para dar efecto de "sangría" */
-}
-
-/* Iconos de la barra lateral */
-mat-icon {
-  vertical-align: middle;
-  color: #ecf0f1;
-}
-
-/* Estilo para la sección principal (contenido) */
 main {
-  display: flex;
-  justify-content: flex-start;
-  overflow-y: auto; /* Permite desplazamiento del contenido principal */
-  height: 100vh; /* Asegura que el contenido principal ocupe el espacio restante */
+  flex-grow: 1; /* Permitir que el contenido principal ocupe el espacio restante */
+  padding: 20px;
+  color: #0e6364;
 }
 
-/* Para asegurar que los títulos sean legibles y bien distribuidos */
-h3, h4, h5 {
-  font-weight: 600;
-  color: #0e6364; /* Azul oscuro */
-}
-
-/* Barra lateral en pantallas pequeñas */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .sidebar {
-    display: none; /* Ocultamos la barra lateral en pantallas pequeñas */
+    width: 0;
+    display: none;
   }
 
-  .mat-tab-group {
-    margin-bottom: 20px; /* Espacio entre las tabs y el contenido */
-  }
-
-  .mat-tab-label {
-    font-size: 1rem;
-    padding: 12px;
-    text-align: center;
-  }
-
-  .mat-tab-label-active {
-    background-color: #0e6364; /* Cambiar color al tab activo */
+  main {
+    width: 100%;
   }
 }
 
-/* Barra lateral en pantallas grandes */
-@media (min-width: 768px) {
+/* Estilo para los botones en la barra lateral */
+mat-button {
+  font-size: 1rem;
+}
+
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
   .sidebar {
-    width: 250px; /* Ajusta el ancho de la barra lateral */
+    width: 0;
+    display: none;
   }
 
-  .content-main {
-    margin-left: 250px; /* Asegura que el contenido principal no se superponga con la barra lateral */
-    padding-left: 20px;
-   
+  main {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .sidebar {
+    width: 250px; /* Ajusta el ancho de la barra lateral */
+    display: none;
+  }
+}
+
+/* Rango entre 768px y 1000px */
+@media (min-width: 768px) and (max-width: 960px) {
+  .sidebar {
+    width: 200px; /* Reducir ancho */
+    display: none;
+  }
+  main {
+    width: calc(100% - 200px); /* Ajustar ancho del contenido principal */
+    margin-left: 0;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1001px) {
+  .sidebar {
+    width: 250px;
+    display: none;
+  }
+
+  main {
+    width: calc(100% - 250px);
   }
 }

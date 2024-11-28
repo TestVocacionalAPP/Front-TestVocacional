@@ -4,7 +4,7 @@
   <span class="example-spacer"></span>
 
   <!-- Botón hamburguesa solo visible en móvil -->
-  <button class="hamburger-menu" (click)="toggleMenu()">
+  <button *ngIf="isLoggedIn()" class="hamburger-menu" (click)="toggleMenu()">
     ☰
   </button>
 

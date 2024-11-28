@@ -4,21 +4,17 @@
     <nav class="col-md-3 col-lg-2 d-md-block text-white sidebar">
       <div class="position-sticky">
         <h3 class="text-center mb-4">Admin Panel</h3>
-
-        <!-- Barra lateral para pantallas grandes -->
         <mat-nav-list *ngIf="!isMobile">
           <mat-list-item>
             <a mat-button class="w-100 text-white" routerLink="/admin/registroTest">
               <mat-icon class="me-2">assignment</mat-icon> Crear Test
             </a>
           </mat-list-item>
-
           <mat-list-item>
             <a mat-button class="w-100 text-white" routerLink="/admin/crear-experto">
               <mat-icon class="me-2">person_add</mat-icon> Experto
             </a>
           </mat-list-item>
-
           <mat-list-item>
             <a mat-button class="w-100 text-white" routerLink="/admin/recurso-educativo">
               <mat-icon class="me-2">school</mat-icon> Recursos educativos
@@ -38,7 +34,7 @@
       </mat-tab-group>
 
       <!-- Contenido principal (router outlet) -->
-      <router-outlet></router-outlet>
+      <router-outlet></router-outlet> <!-- Esto renderiza el contenido del formulario -->
     </main>
   </div>
 </div>

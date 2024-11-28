@@ -50,7 +50,7 @@ h2 {
   transition: transform 0.3s ease-in-out;  /* Efecto al pasar el cursor */
   display: flex;
   flex-direction: column;
-  height: 400px; /* Altura fija de la tarjeta */
+  height: 450px; /* Altura fija de la tarjeta */
   justify-content: space-between; /* Asegura que los elementos se distribuyan bien */
   min-height: 400px; /* Asegura que la tarjeta nunca sea más pequeña que esto */
   max-height: 500px; /* Evita que la tarjeta se haga demasiado grande si la descripción es muy larga */
@@ -64,6 +64,12 @@ mat-card-content {
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Limita la cantidad de líneas visibles para la descripción */
   -webkit-box-orient: vertical;
+  line-height: 1.5; /* Mantener la altura de línea consistente */
+}
+
+/* Agregar un pequeño margen en la parte inferior de las tarjetas para mejor separación */
+.expert-card-content p {
+  margin-bottom: 10px;
 }
 
 /* Grid de tarjetas para expertos (adaptación responsiva) */
