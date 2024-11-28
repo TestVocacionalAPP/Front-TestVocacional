@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {GlobalModule} from "../global/global.module";
 import {MatTabsModule} from "@angular/material/tabs";
+import { EditarExpertoModalComponent } from './components/editar-experto-modal/editar-experto-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     ExpertoListComponent,
     CrearRecursoComponent,
     RecursoListComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    EditarExpertoModalComponent
   ],
   imports: [
     CommonModule,

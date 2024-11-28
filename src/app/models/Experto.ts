@@ -11,4 +11,5 @@ export interface Experto {
   likes: number;
   telefono: string;
   correo: string;
+  password?: string; 
 }
