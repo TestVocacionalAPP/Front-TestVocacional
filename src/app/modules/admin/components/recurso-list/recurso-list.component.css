@@ -58,11 +58,11 @@
 }
 
 .premium-badge {
-  background-color: #d3d3d3; /* Naranja para Premium */
+  background-color: #f39c12; /* Naranja para Premium */
 }
 
 .gratis-badge {
-  background-color: #0e6364; /* Verde para Gratuito */
+  background-color: #27ae60; /* Verde para Gratuito */
 }
 
 /* Barra de búsqueda */

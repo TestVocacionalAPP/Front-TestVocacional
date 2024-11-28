@@ -1,0 +1,79 @@
+/* Contenedor principal */
+.crear-experto-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tarjeta de formulario */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+/* Encabezado */
+.card h2 {
+  font-size: 1.8rem;
+  color: #0e6364;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Campos de formulario */
+.mat-form-field {
+  margin-bottom: 15px;
+}
+
+.mat-form-field .mat-label {
+  font-weight: 600;
+  color: #0e6364;
+}
+
+.mat-input-element {
+  color: #0e6364;
+}
+
+.mat-form-field.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #e8f5e9;
+  border-radius: 5px;
+}
+
+.mat-form-field.mat-form-field-appearance-fill .mat-form-field-outline {
+  color: #047857;
+}
+
+/* Botón Cancelar */
+button.btn-cancelar {
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 25px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+  border: 1px solid #ddd;
+}
+
+button.btn-cancelar:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+button.btn-cancelar:active {
+  transform: translateY(0);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .crear-experto-container {
+    padding: 15px;
+  }
+
+  button.btn-cancelar {
+    width: 100%;
+  }
+}

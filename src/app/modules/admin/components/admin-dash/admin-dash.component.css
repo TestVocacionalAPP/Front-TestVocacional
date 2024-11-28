@@ -2,17 +2,18 @@
 .sidebar {
   background-color: #0b4747; /* Azul oscuro */
   display: block;
-  position: relative;
-  top: -2px;
+  position: sticky; /* Se mantiene fija en la pantalla */
+  top: 0;
   background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1879 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="%230e6364" d="M 0 0 L 950 110 L 950 0 L 0 0 Z" stroke-width="0"></path> <path fill="%230e6364" d="M 949 110 L 1869 7 L 1869 0 L 949 0 Z" stroke-width="0"></path> </svg>');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom ;
+  background-position: bottom;
   height: 100vh; /* Asegura que la barra lateral ocupe toda la altura */
-  width: 30vh;
+  width: 250px; /* Ajusta el ancho de la barra lateral */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para un efecto flotante */
+  padding-top: 20px;
+  z-index: 1000;
 }
-
 
 /* Títulos de la barra lateral */
 .sidebar h3 {
@@ -21,7 +22,6 @@
   margin-bottom: 20px;
   font-weight: bold;
 }
-
 
 /* Estilo de los enlaces de la barra lateral */
 .sidebar .mat-nav-list a {
@@ -48,21 +48,16 @@ mat-icon {
 
 /* Estilo para la sección principal (contenido) */
 main {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  overflow-y: auto; /* Permite desplazamiento del contenido principal */
+  height: 100vh; /* Asegura que el contenido principal ocupe el espacio restante */
 }
 
 /* Para asegurar que los títulos sean legibles y bien distribuidos */
 h3, h4, h5 {
   font-weight: 600;
   color: #0e6364; /* Azul oscuro */
-}
-
-/* Estilo para los botones en la barra lateral */
-mat-button {
-  font-size: 1rem;
 }
 
 /* Barra lateral en pantallas pequeñas */
@@ -89,10 +84,12 @@ mat-button {
 /* Barra lateral en pantallas grandes */
 @media (min-width: 768px) {
   .sidebar {
-    width: 30vh;
+    width: 250px; /* Ajusta el ancho de la barra lateral */
+  }
+
+  .content-main {
+    margin-left: 250px; /* Asegura que el contenido principal no se superponga con la barra lateral */
+    padding-left: 20px;
+   
   }
 }
-
-
-
-

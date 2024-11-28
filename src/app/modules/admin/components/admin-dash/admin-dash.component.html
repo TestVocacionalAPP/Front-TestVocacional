@@ -1,8 +1,8 @@
 <div class="container-fluid p-0">
   <div class="row">
     <!-- Barra lateral para pantallas grandes -->
-    <nav class="col-md-3 d-md-block text-white sidebar">
-      <div class="position-sticky py-3">
+    <nav class="col-md-3 col-lg-2 d-md-block text-white sidebar">
+      <div class="position-sticky">
         <h3 class="text-center mb-4">Admin Panel</h3>
 
         <!-- Barra lateral para pantallas grandes -->
@@ -29,7 +29,7 @@
     </nav>
 
     <!-- Contenido principal -->
-    <main class="col-md-9 ms-sm-auto px-md-4 py-4">
+    <main class="col-md-9 ms-sm-auto px-md-4 py-4 content-main">
       <!-- Tabs para pantallas pequeñas -->
       <mat-tab-group *ngIf="isMobile" (selectedTabChange)="onTabChange($event)">
         <mat-tab label="Crear Test"></mat-tab>

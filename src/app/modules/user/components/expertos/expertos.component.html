@@ -11,6 +11,7 @@
   <div class="d-flex justify-content-center mb-3">
     <mat-form-field appearance="fill" class="search-bar">
       <mat-label>Buscar por especialidad</mat-label>
+      <mat-icon matPrefix>search</mat-icon> <!-- Icono de búsqueda al principio -->
       <input matInput (input)="filtrarExpertos($event)" placeholder="Ingrese nombre o especialidad">
     </mat-form-field>
   </div>
@@ -35,6 +36,7 @@
           <button mat-raised-button class="color-default" (click)="contactarExperto(experto)">Contactar</button>
           <button mat-raised-button class="color-default" [routerLink]="['/user/ver/detalle', experto.id]">Ver Detalles</button>
         </mat-card-actions>
+
       </mat-card>
     </div>
   </div>
